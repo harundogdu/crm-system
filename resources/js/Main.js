@@ -1,9 +1,10 @@
-import Example from "./components/Example";
 
 const Main = () => {
     return (
         <div>
-            <Example/>
+            <div className="container">
+                
+            </div>
         </div>
     );
 }

@@ -1,4 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);
 @charset "UTF-8";
 /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
@@ -48,16 +47,16 @@
   --bs-white-rgb: 255, 255, 255;
   --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 33, 37, 41;
-  --bs-body-bg-rgb: 248, 250, 252;
-  --bs-font-sans-serif: "Nunito", sans-serif;
+  --bs-body-bg-rgb: 255, 255, 255;
+  --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
   --bs-body-font-family: var(--bs-font-sans-serif);
-  --bs-body-font-size: 0.9rem;
+  --bs-body-font-size: 1rem;
   --bs-body-font-weight: 400;
-  --bs-body-line-height: 1.6;
+  --bs-body-line-height: 1.5;
   --bs-body-color: #212529;
-  --bs-body-bg: #f8fafc;
+  --bs-body-bg: #fff;
 }
 
 *,
@@ -105,47 +104,47 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
 }
 
 h1, .h1 {
-  font-size: calc(1.35rem + 1.2vw);
+  font-size: calc(1.375rem + 1.5vw);
 }
 @media (min-width: 1200px) {
   h1, .h1 {
-    font-size: 2.25rem;
+    font-size: 2.5rem;
   }
 }
 
 h2, .h2 {
-  font-size: calc(1.305rem + 0.66vw);
+  font-size: calc(1.325rem + 0.9vw);
 }
 @media (min-width: 1200px) {
   h2, .h2 {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 }
 
 h3, .h3 {
-  font-size: calc(1.2825rem + 0.39vw);
+  font-size: calc(1.3rem + 0.6vw);
 }
 @media (min-width: 1200px) {
   h3, .h3 {
-    font-size: 1.575rem;
+    font-size: 1.75rem;
   }
 }
 
 h4, .h4 {
-  font-size: calc(1.26rem + 0.12vw);
+  font-size: calc(1.275rem + 0.3vw);
 }
 @media (min-width: 1200px) {
   h4, .h4 {
-    font-size: 1.35rem;
+    font-size: 1.5rem;
   }
 }
 
 h5, .h5 {
-  font-size: 1.125rem;
+  font-size: 1.25rem;
 }
 
 h6, .h6 {
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 p {
@@ -156,10 +155,10 @@ p {
 abbr[title],
 abbr[data-bs-original-title] {
   -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
+  text-decoration: underline dotted;
   cursor: help;
   -webkit-text-decoration-skip-ink: none;
-          text-decoration-skip-ink: none;
+  text-decoration-skip-ink: none;
 }
 
 address {
@@ -484,7 +483,7 @@ progress {
 }
 
 .lead {
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   font-weight: 300;
 }
 
@@ -578,7 +577,7 @@ progress {
 
 .blockquote {
   margin-bottom: 1rem;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
 }
 .blockquote > :last-child {
   margin-bottom: 0;
@@ -601,7 +600,7 @@ progress {
 
 .img-thumbnail {
   padding: 0.25rem;
-  background-color: #f8fafc;
+  background-color: #fff;
   border: 1px solid #dee2e6;
   border-radius: 0.25rem;
   max-width: 100%;
@@ -2160,19 +2159,19 @@ progress {
   padding-bottom: calc(0.375rem + 1px);
   margin-bottom: 0;
   font-size: inherit;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 .col-form-label-lg {
   padding-top: calc(0.5rem + 1px);
   padding-bottom: calc(0.5rem + 1px);
-  font-size: 1.125rem;
+  font-size: 1.25rem;
 }
 
 .col-form-label-sm {
   padding-top: calc(0.25rem + 1px);
   padding-bottom: calc(0.25rem + 1px);
-  font-size: 0.7875rem;
+  font-size: 0.875rem;
 }
 
 .form-text {
@@ -2185,16 +2184,16 @@ progress {
   display: block;
   width: 100%;
   padding: 0.375rem 0.75rem;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.5;
   color: #212529;
-  background-color: #f8fafc;
+  background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #ced4da;
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -2211,13 +2210,13 @@ progress {
 }
 .form-control:focus {
   color: #212529;
-  background-color: #f8fafc;
+  background-color: #fff;
   border-color: #86b7fe;
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
 .form-control::-webkit-date-and-time-value {
-  height: 1.6em;
+  height: 1.5em;
 }
 .form-control::-moz-placeholder {
   color: #6c757d;
@@ -2239,7 +2238,7 @@ progress {
   padding: 0.375rem 0.75rem;
   margin: -0.375rem -0.75rem;
   -webkit-margin-end: 0.75rem;
-          margin-inline-end: 0.75rem;
+  margin-inline-end: 0.75rem;
   color: #212529;
   background-color: #e9ecef;
   pointer-events: none;
@@ -2255,7 +2254,7 @@ progress {
   padding: 0.375rem 0.75rem;
   margin: -0.375rem -0.75rem;
   -webkit-margin-end: 0.75rem;
-          margin-inline-end: 0.75rem;
+  margin-inline-end: 0.75rem;
   color: #212529;
   background-color: #e9ecef;
   pointer-events: none;
@@ -2285,7 +2284,7 @@ progress {
   padding: 0.375rem 0.75rem;
   margin: -0.375rem -0.75rem;
   -webkit-margin-end: 0.75rem;
-          margin-inline-end: 0.75rem;
+  margin-inline-end: 0.75rem;
   color: #212529;
   background-color: #e9ecef;
   pointer-events: none;
@@ -2312,7 +2311,7 @@ progress {
   width: 100%;
   padding: 0.375rem 0;
   margin-bottom: 0;
-  line-height: 1.6;
+  line-height: 1.5;
   color: #212529;
   background-color: transparent;
   border: solid transparent;
@@ -2324,63 +2323,63 @@ progress {
 }
 
 .form-control-sm {
-  min-height: calc(1.6em + 0.5rem + 2px);
+  min-height: calc(1.5em + 0.5rem + 2px);
   padding: 0.25rem 0.5rem;
-  font-size: 0.7875rem;
+  font-size: 0.875rem;
   border-radius: 0.2rem;
 }
 .form-control-sm::-webkit-file-upload-button {
   padding: 0.25rem 0.5rem;
   margin: -0.25rem -0.5rem;
   -webkit-margin-end: 0.5rem;
-          margin-inline-end: 0.5rem;
+  margin-inline-end: 0.5rem;
 }
 .form-control-sm::file-selector-button {
   padding: 0.25rem 0.5rem;
   margin: -0.25rem -0.5rem;
   -webkit-margin-end: 0.5rem;
-          margin-inline-end: 0.5rem;
+  margin-inline-end: 0.5rem;
 }
 .form-control-sm::-webkit-file-upload-button {
   padding: 0.25rem 0.5rem;
   margin: -0.25rem -0.5rem;
   -webkit-margin-end: 0.5rem;
-          margin-inline-end: 0.5rem;
+  margin-inline-end: 0.5rem;
 }
 
 .form-control-lg {
-  min-height: calc(1.6em + 1rem + 2px);
+  min-height: calc(1.5em + 1rem + 2px);
   padding: 0.5rem 1rem;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   border-radius: 0.3rem;
 }
 .form-control-lg::-webkit-file-upload-button {
   padding: 0.5rem 1rem;
   margin: -0.5rem -1rem;
   -webkit-margin-end: 1rem;
-          margin-inline-end: 1rem;
+  margin-inline-end: 1rem;
 }
 .form-control-lg::file-selector-button {
   padding: 0.5rem 1rem;
   margin: -0.5rem -1rem;
   -webkit-margin-end: 1rem;
-          margin-inline-end: 1rem;
+  margin-inline-end: 1rem;
 }
 .form-control-lg::-webkit-file-upload-button {
   padding: 0.5rem 1rem;
   margin: -0.5rem -1rem;
   -webkit-margin-end: 1rem;
-          margin-inline-end: 1rem;
+  margin-inline-end: 1rem;
 }
 
 textarea.form-control {
-  min-height: calc(1.6em + 0.75rem + 2px);
+  min-height: calc(1.5em + 0.75rem + 2px);
 }
 textarea.form-control-sm {
-  min-height: calc(1.6em + 0.5rem + 2px);
+  min-height: calc(1.5em + 0.5rem + 2px);
 }
 textarea.form-control-lg {
-  min-height: calc(1.6em + 1rem + 2px);
+  min-height: calc(1.5em + 1rem + 2px);
 }
 
 .form-control-color {
@@ -2392,11 +2391,11 @@ textarea.form-control-lg {
   cursor: pointer;
 }
 .form-control-color::-moz-color-swatch {
-  height: 1.6em;
+  height: 1.5em;
   border-radius: 0.25rem;
 }
 .form-control-color::-webkit-color-swatch {
-  height: 1.6em;
+  height: 1.5em;
   border-radius: 0.25rem;
 }
 
@@ -2405,11 +2404,11 @@ textarea.form-control-lg {
   width: 100%;
   padding: 0.375rem 2.25rem 0.375rem 0.75rem;
   -moz-padding-start: calc(0.75rem - 3px);
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.5;
   color: #212529;
-  background-color: #f8fafc;
+  background-color: #fff;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
@@ -2418,8 +2417,8 @@ textarea.form-control-lg {
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 @media (prefers-reduced-motion: reduce) {
   .form-select {
@@ -2447,7 +2446,7 @@ textarea.form-control-lg {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   padding-left: 0.5rem;
-  font-size: 0.7875rem;
+  font-size: 0.875rem;
   border-radius: 0.2rem;
 }
 
@@ -2455,13 +2454,13 @@ textarea.form-control-lg {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   padding-left: 1rem;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   border-radius: 0.3rem;
 }
 
 .form-check {
   display: block;
-  min-height: 1.44rem;
+  min-height: 1.5rem;
   padding-left: 1.5em;
   margin-bottom: 0.125rem;
 }
@@ -2473,18 +2472,18 @@ textarea.form-control-lg {
 .form-check-input {
   width: 1em;
   height: 1em;
-  margin-top: 0.3em;
+  margin-top: 0.25em;
   vertical-align: top;
-  background-color: #f8fafc;
+  background-color: #fff;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
   border: 1px solid rgba(0, 0, 0, 0.25);
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   -webkit-print-color-adjust: exact;
-          color-adjust: exact;
+  color-adjust: exact;
 }
 .form-check-input[type=checkbox] {
   border-radius: 0.25em;
@@ -2570,17 +2569,17 @@ textarea.form-control-lg {
   padding: 0;
   background-color: transparent;
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 .form-range:focus {
   outline: 0;
 }
 .form-range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 1px #f8fafc, 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  box-shadow: 0 0 0 1px #fff, 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
 .form-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px #f8fafc, 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  box-shadow: 0 0 0 1px #fff, 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
 .form-range::-moz-focus-outer {
   border: 0;
@@ -2595,7 +2594,7 @@ textarea.form-control-lg {
   -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   -webkit-appearance: none;
-          appearance: none;
+  appearance: none;
 }
 @media (prefers-reduced-motion: reduce) {
   .form-range::-webkit-slider-thumb {
@@ -2624,7 +2623,7 @@ textarea.form-control-lg {
   -moz-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   -moz-appearance: none;
-       appearance: none;
+  appearance: none;
 }
 @media (prefers-reduced-motion: reduce) {
   .form-range::-moz-range-thumb {
@@ -2759,9 +2758,9 @@ textarea.form-control-lg {
   display: flex;
   align-items: center;
   padding: 0.375rem 0.75rem;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.5;
   color: #212529;
   text-align: center;
   white-space: nowrap;
@@ -2775,7 +2774,7 @@ textarea.form-control-lg {
 .input-group-lg > .input-group-text,
 .input-group-lg > .btn {
   padding: 0.5rem 1rem;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   border-radius: 0.3rem;
 }
 
@@ -2784,7 +2783,7 @@ textarea.form-control-lg {
 .input-group-sm > .input-group-text,
 .input-group-sm > .btn {
   padding: 0.25rem 0.5rem;
-  font-size: 0.7875rem;
+  font-size: 0.875rem;
   border-radius: 0.2rem;
 }
 
@@ -2825,7 +2824,7 @@ textarea.form-control-lg {
   max-width: 100%;
   padding: 0.25rem 0.5rem;
   margin-top: 0.1rem;
-  font-size: 0.7875rem;
+  font-size: 0.875rem;
   color: #fff;
   background-color: rgba(25, 135, 84, 0.9);
   border-radius: 0.25rem;
@@ -2840,11 +2839,11 @@ textarea.form-control-lg {
 
 .was-validated .form-control:valid, .form-control.is-valid {
   border-color: #198754;
-  padding-right: calc(1.6em + 0.75rem);
+  padding-right: calc(1.5em + 0.75rem);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
-  background-position: right calc(0.4em + 0.1875rem) center;
-  background-size: calc(0.8em + 0.375rem) calc(0.8em + 0.375rem);
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
 .was-validated .form-control:valid:focus, .form-control.is-valid:focus {
   border-color: #198754;
@@ -2852,8 +2851,8 @@ textarea.form-control-lg {
 }
 
 .was-validated textarea.form-control:valid, textarea.form-control.is-valid {
-  padding-right: calc(1.6em + 0.75rem);
-  background-position: top calc(0.4em + 0.1875rem) right calc(0.4em + 0.1875rem);
+  padding-right: calc(1.5em + 0.75rem);
+  background-position: top calc(0.375em + 0.1875rem) right calc(0.375em + 0.1875rem);
 }
 
 .was-validated .form-select:valid, .form-select.is-valid {
@@ -2863,7 +2862,7 @@ textarea.form-control-lg {
   padding-right: 4.125rem;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e"), url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
   background-position: right 0.75rem center, center right 2.25rem;
-  background-size: 16px 12px, calc(0.8em + 0.375rem) calc(0.8em + 0.375rem);
+  background-size: 16px 12px, calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
 .was-validated .form-select:valid:focus, .form-select.is-valid:focus {
   border-color: #198754;
@@ -2914,7 +2913,7 @@ textarea.form-control-lg {
   max-width: 100%;
   padding: 0.25rem 0.5rem;
   margin-top: 0.1rem;
-  font-size: 0.7875rem;
+  font-size: 0.875rem;
   color: #fff;
   background-color: rgba(220, 53, 69, 0.9);
   border-radius: 0.25rem;
@@ -2929,11 +2928,11 @@ textarea.form-control-lg {
 
 .was-validated .form-control:invalid, .form-control.is-invalid {
   border-color: #dc3545;
-  padding-right: calc(1.6em + 0.75rem);
+  padding-right: calc(1.5em + 0.75rem);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
-  background-position: right calc(0.4em + 0.1875rem) center;
-  background-size: calc(0.8em + 0.375rem) calc(0.8em + 0.375rem);
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
 .was-validated .form-control:invalid:focus, .form-control.is-invalid:focus {
   border-color: #dc3545;
@@ -2941,8 +2940,8 @@ textarea.form-control-lg {
 }
 
 .was-validated textarea.form-control:invalid, textarea.form-control.is-invalid {
-  padding-right: calc(1.6em + 0.75rem);
-  background-position: top calc(0.4em + 0.1875rem) right calc(0.4em + 0.1875rem);
+  padding-right: calc(1.5em + 0.75rem);
+  background-position: top calc(0.375em + 0.1875rem) right calc(0.375em + 0.1875rem);
 }
 
 .was-validated .form-select:invalid, .form-select.is-invalid {
@@ -2952,7 +2951,7 @@ textarea.form-control-lg {
   padding-right: 4.125rem;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e"), url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
   background-position: right 0.75rem center, center right 2.25rem;
-  background-size: 16px 12px, calc(0.8em + 0.375rem) calc(0.8em + 0.375rem);
+  background-size: 16px 12px, calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
 .was-validated .form-select:invalid:focus, .form-select.is-invalid:focus {
   border-color: #dc3545;
@@ -2990,20 +2989,20 @@ textarea.form-control-lg {
 .btn {
   display: inline-block;
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.5;
   color: #212529;
   text-align: center;
   text-decoration: none;
   vertical-align: middle;
   cursor: pointer;
   -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+      user-select: none;
   background-color: transparent;
   border: 1px solid transparent;
   padding: 0.375rem 0.75rem;
-  font-size: 0.9rem;
+  font-size: 1rem;
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -3478,13 +3477,13 @@ textarea.form-control-lg {
 
 .btn-lg, .btn-group-lg > .btn {
   padding: 0.5rem 1rem;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   border-radius: 0.3rem;
 }
 
 .btn-sm, .btn-group-sm > .btn {
   padding: 0.25rem 0.5rem;
-  font-size: 0.7875rem;
+  font-size: 0.875rem;
   border-radius: 0.2rem;
 }
 
@@ -3556,7 +3555,7 @@ textarea.form-control-lg {
   min-width: 10rem;
   padding: 0.5rem 0;
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #212529;
   text-align: left;
   list-style: none;
@@ -3728,8 +3727,6 @@ textarea.form-control-lg {
   margin-left: 0.255em;
   vertical-align: 0.255em;
   content: "";
-}
-.dropstart .dropdown-toggle::after {
   display: none;
 }
 .dropstart .dropdown-toggle::before {
@@ -3791,7 +3788,7 @@ textarea.form-control-lg {
   display: block;
   padding: 0.5rem 1rem;
   margin-bottom: 0;
-  font-size: 0.7875rem;
+  font-size: 0.875rem;
   color: #6c757d;
   white-space: nowrap;
 }
@@ -3978,8 +3975,8 @@ textarea.form-control-lg {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #495057;
-  background-color: #f8fafc;
-  border-color: #dee2e6 #dee2e6 #f8fafc;
+  background-color: #fff;
+  border-color: #dee2e6 #dee2e6 #fff;
 }
 .nav-tabs .dropdown-menu {
   margin-top: -1px;
@@ -4045,10 +4042,10 @@ textarea.form-control-lg {
   justify-content: space-between;
 }
 .navbar-brand {
-  padding-top: 0.32rem;
-  padding-bottom: 0.32rem;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
   margin-right: 1rem;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -4080,7 +4077,7 @@ textarea.form-control-lg {
 
 .navbar-toggler {
   padding: 0.25rem 0.75rem;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   line-height: 1;
   background-color: transparent;
   border: 1px solid transparent;
@@ -4584,10 +4581,6 @@ textarea.form-control-lg {
   margin-left: -0.5rem;
   border-bottom: 0;
 }
-.card-header-tabs .nav-link.active {
-  background-color: #fff;
-  border-bottom-color: #fff;
-}
 
 .card-header-pills {
   margin-right: -0.5rem;
@@ -4670,10 +4663,10 @@ textarea.form-control-lg {
   align-items: center;
   width: 100%;
   padding: 1rem 1.25rem;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #212529;
   text-align: left;
-  background-color: #f8fafc;
+  background-color: #fff;
   border: 0;
   border-radius: 0;
   overflow-anchor: none;
@@ -4724,7 +4717,7 @@ textarea.form-control-lg {
 }
 
 .accordion-item {
-  background-color: #f8fafc;
+  background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 .accordion-item:first-of-type {
@@ -4859,7 +4852,7 @@ textarea.form-control-lg {
 
 .pagination-lg .page-link {
   padding: 0.75rem 1.5rem;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
 }
 .pagination-lg .page-item:first-child .page-link {
   border-top-left-radius: 0.3rem;
@@ -4872,7 +4865,7 @@ textarea.form-control-lg {
 
 .pagination-sm .page-link {
   padding: 0.25rem 0.5rem;
-  font-size: 0.7875rem;
+  font-size: 0.875rem;
 }
 .pagination-sm .page-item:first-child .page-link {
   border-top-left-radius: 0.2rem;
@@ -5018,7 +5011,7 @@ textarea.form-control-lg {
   display: flex;
   height: 1rem;
   overflow: hidden;
-  font-size: 0.675rem;
+  font-size: 0.75rem;
   background-color: #e9ecef;
   border-radius: 0.25rem;
 }
@@ -5047,12 +5040,12 @@ textarea.form-control-lg {
 
 .progress-bar-animated {
   -webkit-animation: 1s linear infinite progress-bar-stripes;
-          animation: 1s linear infinite progress-bar-stripes;
+  animation: 1s linear infinite progress-bar-stripes;
 }
 @media (prefers-reduced-motion: reduce) {
   .progress-bar-animated {
     -webkit-animation: none;
-            animation: none;
+    animation: none;
   }
 }
 
@@ -5414,9 +5407,9 @@ textarea.form-control-lg {
 .btn-close:disabled, .btn-close.disabled {
   pointer-events: none;
   -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+      user-select: none;
   opacity: 0.25;
 }
 
@@ -5572,7 +5565,7 @@ textarea.form-control-lg {
 
 .modal-title {
   margin-bottom: 0;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 .modal-body {
@@ -5764,7 +5757,7 @@ textarea.form-control-lg {
   font-family: var(--bs-font-sans-serif);
   font-style: normal;
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.5;
   text-align: left;
   text-align: start;
   text-decoration: none;
@@ -5775,7 +5768,7 @@ textarea.form-control-lg {
   word-spacing: normal;
   white-space: normal;
   line-break: auto;
-  font-size: 0.7875rem;
+  font-size: 0.875rem;
   word-wrap: break-word;
   opacity: 0;
 }
@@ -5866,7 +5859,7 @@ textarea.form-control-lg {
   font-family: var(--bs-font-sans-serif);
   font-style: normal;
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.5;
   text-align: left;
   text-align: start;
   text-decoration: none;
@@ -5877,7 +5870,7 @@ textarea.form-control-lg {
   word-spacing: normal;
   white-space: normal;
   line-break: auto;
-  font-size: 0.7875rem;
+  font-size: 0.875rem;
   word-wrap: break-word;
   background-color: #fff;
   background-clip: padding-box;
@@ -5971,7 +5964,7 @@ textarea.form-control-lg {
 .popover-header {
   padding: 0.5rem 1rem;
   margin-bottom: 0;
-  font-size: 0.9rem;
+  font-size: 1rem;
   background-color: #f0f0f0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   border-top-left-radius: calc(0.3rem - 1px);
@@ -6012,7 +6005,7 @@ textarea.form-control-lg {
   width: 100%;
   margin-right: -100%;
   -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   transition: transform 0.6s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -6213,7 +6206,7 @@ textarea.form-control-lg {
   border-right-color: transparent;
   border-radius: 50%;
   -webkit-animation: 0.75s linear infinite spinner-border;
-          animation: 0.75s linear infinite spinner-border;
+  animation: 0.75s linear infinite spinner-border;
 }
 
 .spinner-border-sm {
@@ -6250,7 +6243,7 @@ textarea.form-control-lg {
   border-radius: 50%;
   opacity: 0;
   -webkit-animation: 0.75s linear infinite spinner-grow;
-          animation: 0.75s linear infinite spinner-grow;
+  animation: 0.75s linear infinite spinner-grow;
 }
 
 .spinner-grow-sm {
@@ -6262,7 +6255,7 @@ textarea.form-control-lg {
   .spinner-border,
 .spinner-grow {
     -webkit-animation-duration: 1.5s;
-            animation-duration: 1.5s;
+    animation-duration: 1.5s;
   }
 }
 .offcanvas {
@@ -6315,7 +6308,7 @@ textarea.form-control-lg {
 
 .offcanvas-title {
   margin-bottom: 0;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 .offcanvas-body {
@@ -6390,7 +6383,7 @@ textarea.form-control-lg {
 
 .placeholder-glow .placeholder {
   -webkit-animation: placeholder-glow 2s ease-in-out infinite;
-          animation: placeholder-glow 2s ease-in-out infinite;
+  animation: placeholder-glow 2s ease-in-out infinite;
 }
 
 @-webkit-keyframes placeholder-glow {
@@ -6406,24 +6399,24 @@ textarea.form-control-lg {
 }
 .placeholder-wave {
   -webkit-mask-image: linear-gradient(130deg, #000 55%, rgba(0, 0, 0, 0.8) 75%, #000 95%);
-          mask-image: linear-gradient(130deg, #000 55%, rgba(0, 0, 0, 0.8) 75%, #000 95%);
+  mask-image: linear-gradient(130deg, #000 55%, rgba(0, 0, 0, 0.8) 75%, #000 95%);
   -webkit-mask-size: 200% 100%;
-          mask-size: 200% 100%;
+  mask-size: 200% 100%;
   -webkit-animation: placeholder-wave 2s linear infinite;
-          animation: placeholder-wave 2s linear infinite;
+  animation: placeholder-wave 2s linear infinite;
 }
 
 @-webkit-keyframes placeholder-wave {
   100% {
     -webkit-mask-position: -200% 0%;
-            mask-position: -200% 0%;
+    mask-position: -200% 0%;
   }
 }
 
 @keyframes placeholder-wave {
   100% {
     -webkit-mask-position: -200% 0%;
-            mask-position: -200% 0%;
+    mask-position: -200% 0%;
   }
 }
 .clearfix::after {
@@ -7596,27 +7589,27 @@ textarea.form-control-lg {
 }
 
 .fs-1 {
-  font-size: calc(1.35rem + 1.2vw) !important;
+  font-size: calc(1.375rem + 1.5vw) !important;
 }
 
 .fs-2 {
-  font-size: calc(1.305rem + 0.66vw) !important;
+  font-size: calc(1.325rem + 0.9vw) !important;
 }
 
 .fs-3 {
-  font-size: calc(1.2825rem + 0.39vw) !important;
+  font-size: calc(1.3rem + 0.6vw) !important;
 }
 
 .fs-4 {
-  font-size: calc(1.26rem + 0.12vw) !important;
+  font-size: calc(1.275rem + 0.3vw) !important;
 }
 
 .fs-5 {
-  font-size: 1.125rem !important;
+  font-size: 1.25rem !important;
 }
 
 .fs-6 {
-  font-size: 0.9rem !important;
+  font-size: 1rem !important;
 }
 
 .fst-italic {
@@ -7656,7 +7649,7 @@ textarea.form-control-lg {
 }
 
 .lh-base {
-  line-height: 1.6 !important;
+  line-height: 1.5 !important;
 }
 
 .lh-lg {
@@ -7891,22 +7884,22 @@ textarea.form-control-lg {
 
 .user-select-all {
   -webkit-user-select: all !important;
-     -moz-user-select: all !important;
-          user-select: all !important;
+  -moz-user-select: all !important;
+  user-select: all !important;
 }
 
 .user-select-auto {
   -webkit-user-select: auto !important;
-     -moz-user-select: auto !important;
-      -ms-user-select: auto !important;
-          user-select: auto !important;
+  -moz-user-select: auto !important;
+  -ms-user-select: auto !important;
+      user-select: auto !important;
 }
 
 .user-select-none {
   -webkit-user-select: none !important;
-     -moz-user-select: none !important;
-      -ms-user-select: none !important;
-          user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+      user-select: none !important;
 }
 
 .pe-none {
@@ -11230,19 +11223,19 @@ textarea.form-control-lg {
 }
 @media (min-width: 1200px) {
   .fs-1 {
-    font-size: 2.25rem !important;
+    font-size: 2.5rem !important;
   }
 
   .fs-2 {
-    font-size: 1.8rem !important;
+    font-size: 2rem !important;
   }
 
   .fs-3 {
-    font-size: 1.575rem !important;
+    font-size: 1.75rem !important;
   }
 
   .fs-4 {
-    font-size: 1.35rem !important;
+    font-size: 1.5rem !important;
   }
 }
 @media print {
@@ -11286,3 +11279,406 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+/* Bootstrap */
+
+/* Tailwindcss */
+/* ! tailwindcss v3.0.23 | MIT License | https://tailwindcss.com */
+/*
+1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
+*/
+*,
+::before,
+::after {
+  box-sizing: border-box; /* 1 */
+  border-width: 0; /* 2 */
+  border-style: solid; /* 2 */
+  border-color: #e5e7eb; /* 2 */
+}
+::before,
+::after {
+  --tw-content: '';
+}
+/*
+1. Use a consistent sensible line-height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+3. Use a more readable tab size.
+4. Use the user's configured `sans` font-family by default.
+*/
+html {
+  line-height: 1.5; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -moz-tab-size: 4; /* 3 */
+  -o-tab-size: 4;
+     tab-size: 4; /* 3 */
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 4 */
+}
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+*/
+body {
+  margin: 0; /* 1 */
+  line-height: inherit; /* 2 */
+}
+/*
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+3. Ensure horizontal rules are visible by default.
+*/
+hr {
+  height: 0; /* 1 */
+  color: inherit; /* 2 */
+  border-top-width: 1px; /* 3 */
+}
+/*
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+abbr:where([title]) {
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
+/*
+Remove the default font size and weight for headings.
+*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+/*
+Reset links to optimize for opt-in styling instead of opt-out.
+*/
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+/*
+Add the correct font weight in Edge and Safari.
+*/
+b,
+strong {
+  font-weight: bolder;
+}
+/*
+1. Use the user's configured `mono` font family by default.
+2. Correct the odd `em` font sizing in all browsers.
+*/
+code,
+kbd,
+samp,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+/*
+Add the correct font size in all browsers.
+*/
+small {
+  font-size: 80%;
+}
+/*
+Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+*/
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sub {
+  bottom: -0.25em;
+}
+sup {
+  top: -0.5em;
+}
+/*
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+3. Remove gaps between table borders by default.
+*/
+table {
+  text-indent: 0; /* 1 */
+  border-color: inherit; /* 2 */
+  border-collapse: collapse; /* 3 */
+}
+/*
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+3. Remove default padding in all browsers.
+*/
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: inherit; /* 1 */
+  color: inherit; /* 1 */
+  margin: 0; /* 2 */
+  padding: 0; /* 3 */
+}
+/*
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+button,
+select {
+  text-transform: none;
+}
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Remove default button styles.
+*/
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  -webkit-appearance: button; /* 1 */
+  background-color: transparent; /* 2 */
+  background-image: none; /* 2 */
+}
+/*
+Use the modern Firefox focus style for all focusable elements.
+*/
+:-moz-focusring {
+  outline: auto;
+}
+/*
+Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+*/
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+/*
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+progress {
+  vertical-align: baseline;
+}
+/*
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+/*
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+[type='search'] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+/*
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to `inherit` in Safari.
+*/
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+/*
+Add the correct display in Chrome and Safari.
+*/
+summary {
+  display: list-item;
+}
+/*
+Removes the default spacing and border for appropriate elements.
+*/
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+legend {
+  padding: 0;
+}
+ol,
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/*
+Prevent resizing textareas horizontally by default.
+*/
+textarea {
+  resize: vertical;
+}
+/*
+1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+2. Set the default placeholder color to the user's configured gray 400 color.
+*/
+input::-moz-placeholder, textarea::-moz-placeholder {
+  opacity: 1; /* 1 */
+  color: #9ca3af; /* 2 */
+}
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+  opacity: 1; /* 1 */
+  color: #9ca3af; /* 2 */
+}
+input::placeholder,
+textarea::placeholder {
+  opacity: 1; /* 1 */
+  color: #9ca3af; /* 2 */
+}
+/*
+Set the default cursor for buttons.
+*/
+button,
+[role="button"] {
+  cursor: pointer;
+}
+/*
+Make sure disabled buttons don't get the pointer cursor.
+*/
+:disabled {
+  cursor: default;
+}
+/*
+1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
+2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
+   This can trigger a poorly considered lint error in some tools but is included by design.
+*/
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block; /* 1 */
+  vertical-align: middle; /* 2 */
+}
+/*
+Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+*/
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+/*
+Ensure the default browser behavior of the `hidden` attribute.
+*/
+[hidden] {
+  display: none;
+}
+*, ::before, ::after{
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+}
+.container{
+  width: 100%;
+}
+@media (min-width: 640px){
+  .container{
+    max-width: 640px;
+  }
+}
+@media (min-width: 768px){
+  .container{
+    max-width: 768px;
+  }
+}
+@media (min-width: 1024px){
+  .container{
+    max-width: 1024px;
+  }
+}
+@media (min-width: 1280px){
+  .container{
+    max-width: 1280px;
+  }
+}
+@media (min-width: 1536px){
+  .container{
+    max-width: 1536px;
+  }
+}
+.bg-red-500{
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
+}
+.text-3xl{
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+.font-bold{
+  font-weight: 700;
+}
+.underline{
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+}
+

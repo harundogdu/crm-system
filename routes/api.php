@@ -20,5 +20,22 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::prefix('/v1')->name('v1.')->group(function () {
-    Route::post('/register', [AuthController::class, 'register'])->name('register');
+
+    /* NOT Authenticated */
+    Route::prefix('/auth')->name('auth.')->group(function () {
+        Route::post('/login')->name('login')->uses(AuthController::class . '@login');
+        Route::post('/register')->name('register')->uses(AuthController::class . '@register');
+    });
+
+    /* Authenticated */
+    Route::middleware('auth:api')->group(function () {
+
+        Route::prefix('/auth')->name('auth.')->group(function () {
+            Route::post('/logout')->name('logout')->uses(AuthController::class . '@logout');
+            Route::post('/user')->name('user')->uses(AuthController::class . '@user');
+            Route::post('/authenticate')->name('authenticate')->uses(AuthController::class . '@authenticate');
+        });
+
+    });
+
 });

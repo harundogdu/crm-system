@@ -10,7 +10,6 @@ import {
     Register,
     NotFoundPage
 } from "./pages";
-import {Layout} from "./components";
 import {RequireAuth} from "./features/Authentication/RequireAuth";
 import {AuthStatus} from "./features/Authentication/AuthStatus";
 

@@ -15,7 +15,7 @@ import {AuthStatus} from "./features/Authentication/AuthStatus";
 
 const Main = () => {
     return (
-        <div>
+        <div className="w-full h-screen">
             <Routes>
                 <Route path="/" element={
                     <RequireAuth>

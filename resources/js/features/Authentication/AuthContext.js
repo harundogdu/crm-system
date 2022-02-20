@@ -7,14 +7,17 @@ export const AuthContext = createContext();
 export const AuthProvider = ({children}) => {
     let navigate = useNavigate();
     const [isAuthenticated, setIsAuthenticated] = useState(false)
+    const [isAuthLoading, setIsAuthLoading] = useState(false)
     const [user, setUser] = useState({})
 
     useEffect(() => {
+        setIsAuthLoading(true)
         if (!localStorage.getItem('token')) {
+            setIsAuthLoading(false)
             return;
         }
         setIsAuthenticated(true)
-        getUser().then(r => setUser(r.data))
+        getUser().then(r => setUser(r.data)).then(() => setIsAuthLoading(false))
     }, [])
 
     const login = async (user) => {
@@ -68,7 +71,8 @@ export const AuthProvider = ({children}) => {
         logout,
         register,
         setIsAuthenticated,
-        setUser
+        setUser,
+        isAuthLoading
     }
 
     return (

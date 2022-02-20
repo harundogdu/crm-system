@@ -1,26 +1,74 @@
-import {createContext, useContext, useState} from "react";
+import {createContext, useContext, useEffect, useState} from "react";
+import {AuthService} from "../../services/AuthService";
+import {useNavigate} from "react-router-dom";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({children}) => {
-    const [isAuthenticated, setIsAuthenticated] = useState(true)
+    let navigate = useNavigate();
+    const [isAuthenticated, setIsAuthenticated] = useState(false)
     const [user, setUser] = useState({})
 
-    const login = (user) => {
+    useEffect(() => {
+        if (!localStorage.getItem('token')) {
+            return;
+        }
         setIsAuthenticated(true)
-        setUser(user)
+        getUser().then(r => setUser(r.data))
+    }, [])
+
+    const login = async (user) => {
+        const response = await AuthService.post('/api/v1/auth/login', user);
+        if (response.status === 200) {
+            localStorage.setItem('token', response.data.user.access_token);
+            setIsAuthenticated(true);
+            setUser(response.data.user);
+            navigate('/');
+        }
     }
 
-    const logout = () => {
+    const register = async (data) => {
+        const response = await AuthService.post('/api/v1/auth/register', data);
+        if (response.status === 201) {
+            localStorage.setItem('token', response.data.user.access_token);
+            setIsAuthenticated(true);
+            setUser(response.data.user);
+            navigate('/');
+        }
+    }
+
+    const getUser = async () => {
+        try {
+            return await AuthService.post('/api/v1/auth/user', {}, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            })
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    const logout = async () => {
+        await AuthService.post('/api/v1/auth/logout', {}, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
         setIsAuthenticated(false)
         setUser({})
+        localStorage.removeItem('token');
+        navigate('/login')
     }
 
     const value = {
         isAuthenticated,
         user,
         login,
-        logout
+        logout,
+        register,
+        setIsAuthenticated,
+        setUser
     }
 
     return (

@@ -31,7 +31,7 @@ class AuthController extends Controller
             }
             $user = $request->user();
 
-            $tokenResult = $user->createToken('Personal Access');
+            $tokenResult = $user->createToken('Personal Access Token');
             $token = $tokenResult->token;
             if ($request->remember_me) {
                 $token->expires_at = Carbon::now()->addWeeks(1);
@@ -40,12 +40,14 @@ class AuthController extends Controller
 
             return response()->json([
                 'success' => true,
-                'id' => $user->id,
-                'name' => $user->name,
-                'email' => $user->email,
-                'access_token' => $tokenResult->accessToken,
-                'token_type' => 'Bearer',
-                'expires_at' => Carbon::parse($tokenResult->token->expires_at)->toDateTimeString()
+                'user' => [
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'access_token' => $tokenResult->accessToken,
+                    'token_type' => 'Bearer',
+                    'expires_at' => Carbon::parse($tokenResult->token->expires_at)->toDateTimeString()
+                ]
             ], 201);
         } catch (\Exception $exception) {
             return response()->json([
@@ -75,13 +77,15 @@ class AuthController extends Controller
             $token->save();
             return response()->json([
                 'success' => true,
-                'id' => $user->id,
-                'name' => $user->name,
-                'email' => $user->email,
-                'access_token' => $tokenResult->accessToken,
-                'token_type' => 'Bearer',
-                'expires_at' => Carbon::parse($tokenResult->token->expires_at)->toDateTimeString()
-            ], 201);
+                'user' => [
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'access_token' => $tokenResult->accessToken,
+                    'token_type' => 'Bearer',
+                    'expires_at' => Carbon::parse($tokenResult->token->expires_at)->toDateTimeString()
+                ]
+            ], 200);
         } catch (\Exception $exception) {
             return response()->json([
                 'success' => false,

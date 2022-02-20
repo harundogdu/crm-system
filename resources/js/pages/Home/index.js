@@ -8,14 +8,10 @@ export default function Home() {
         return <div>Loading...</div>
     }
     return (
-        <div className="flex flex-col flex-1 min-h-fit h-full">
-            <Navbar/>
-            <Content>
-                <h1>Home</h1>
-                <p>Welcome {user.name}</p>
-                <button onClick={logout}>Logout</button>
-            </Content>
-            <Footer/>
-        </div>
+        <Content>
+            <h1>Home</h1>
+            <p>Welcome {user.name}</p>
+            <button onClick={logout}>Logout</button>
+        </Content>
     );
 }

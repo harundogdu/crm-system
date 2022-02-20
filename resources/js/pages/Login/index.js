@@ -3,8 +3,6 @@ import LoginImage from '../../assets/images/login.png';
 import {useForm} from 'react-hook-form';
 import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import {AuthService} from "../../services/AuthService";
-import {useState} from "react";
 import {useAuth} from "../../features/Authentication/AuthContext";
 
 /**
@@ -15,7 +13,7 @@ import {useAuth} from "../../features/Authentication/AuthContext";
 
 const schema = yup.object().shape({
     email: yup.string().email().required().min(6),
-    password: yup.string().required().min(6)
+    password: yup.string().required().min(8)
 });
 
 export default function Login() {
@@ -38,7 +36,7 @@ export default function Login() {
 
                 <form onSubmit={handleSubmit(login)}>
 
-                    <div className="form-group">
+                    <div className="form-group my-3">
                         <label htmlFor="email" className="form-label">E-Mail*</label>
                         <input
                             type="email"
@@ -55,7 +53,7 @@ export default function Login() {
                         }
                     </div>
 
-                    <div className="form-group my-2">
+                    <div className="form-group my-3">
                         <label htmlFor="password" className="form-label">Password*</label>
                         <input
                             type="password"

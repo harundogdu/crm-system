@@ -30,6 +30,7 @@
     "dependencies": {
         "@hookform/resolvers": "^2.8.8",
         "joi": "^17.6.0",
+        "mdbreact": "^5.2.0",
         "react-hook-form": "^7.27.1",
         "react-router-dom": "^6.2.1",
         "yup": "^0.32.11"

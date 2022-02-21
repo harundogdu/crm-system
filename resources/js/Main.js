@@ -12,7 +12,7 @@ import {
     Categories,
     Accounts,
     Stocks,
-    NotFoundPage
+    NotFoundPage, ProductCreate
 } from "./pages";
 import {RequireAuth} from "./features/Authentication/RequireAuth";
 import {AuthStatus} from "./features/Authentication/AuthStatus";
@@ -30,27 +30,40 @@ const Main = () => {
                         <Home/>
                     </RequireAuth>
                 }/>
+
+                {/*Products*/}
                 <Route path="/products" element={
                     <RequireAuth>
                         <Products/>
                     </RequireAuth>
                 }/>
+                <Route path="/products/create" element={
+                    <RequireAuth>
+                        <ProductCreate/>
+                    </RequireAuth>
+                }/>
+
+                {/*Categories*/}
                 <Route path="/categories" element={
                     <RequireAuth>
                         <Categories/>
                     </RequireAuth>
                 }/>
+                {/*Accounts*/}
                 <Route path="/accounts" element={
                     <RequireAuth>
                         <Accounts/>
                     </RequireAuth>
                 }/>
+
+                {/*Stocks*/}
                 <Route path="/stocks" element={
                     <RequireAuth>
                         <Stocks/>
                     </RequireAuth>
                 }/>
 
+                {/*Authentication*/}
                 <Route path="/login" element={
                     <AuthStatus>
                         <Login/>
@@ -60,8 +73,8 @@ const Main = () => {
                     <AuthStatus>
                         <Register/>
                     </AuthStatus>
-
                 }/>
+                {/*NotFoundPage*/}
                 <Route path="*" element={
                     <NotFoundPage/>
                 }/>

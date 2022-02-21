@@ -1,7 +1,10 @@
-import React, {useEffect} from 'react';
-import {Content} from "../../components";
-import {AuthService} from "../../services/AuthService";
-import {MDBDataTableV5} from 'mdbreact';
+import React, { useEffect } from 'react';
+import { Content } from "../../components";
+import { AuthService } from "../../services/AuthService";
+import { MDBDataTableV5 } from 'mdbreact';
+import { AiOutlineDelete, AiOutlineEdit, AiOutlinePlus } from "react-icons/ai";
+import { NavLink, useNavigate } from "react-router-dom";
+import { CgDetailsMore } from 'react-icons/cg';
 
 function Products() {
     const [isLoading, setIsLoading] = React.useState(true);
@@ -11,15 +14,26 @@ function Products() {
             label: 'Name',
             field: 'name',
             width: 150,
-            attributes: {
-                'aria-controls': 'DataTable',
-                'aria-label': 'Name',
-            },
         },
         {
             label: 'Category',
             field: 'category',
             width: 270,
+        },
+        {
+            label: 'Barcode',
+            field: 'barcode',
+            width: 200,
+        },
+        {
+            label: 'Model Code',
+            field: 'modelCode',
+            width: 200,
+        },
+        {
+            label: 'Brand',
+            field: 'brand',
+            width: 200,
         },
         {
             label: 'Selling Price',
@@ -40,21 +54,57 @@ function Products() {
         {
             label: 'Created At',
             field: 'created_at',
+            sort: 'asc',
+            width: 100,
+        },
+        {
+            label: 'Delete',
+            field: 'delete',
             sort: 'disabled',
             width: 100,
         },
-    ]
-    const rows = [
         {
-            id: products.map(p => p.id),
-            category: products.map(p => p.category.name),
-            name: products.map(p => p.name),
-            sellingPrice: products.map(p => p.sellingPrice),
-            buyingPrice: products.map(p => p.buyingPrice),
-            quantity: products.map(p => p.quantity),
-            created_at: products.map(p => p.created_at)
+            label: 'Detail',
+            field: 'detail',
+            sort: 'disabled',
+            width: 100,
+
         }
     ]
+    const rows = products.map(product => {
+        return {
+            name: product.name,
+            category: product.category.name,
+            barcode: product.barcode,
+            modelCode: product.modelCode,
+            brand: product.brand,
+            sellingPrice: product.sellingPrice,
+            buyingPrice: product.buyingPrice,
+            quantity: product.quantity,
+            created_at: product.created_at,
+            delete: <button onClick={() => deleteProduct(product.id)}><AiOutlineDelete /></button>,
+            detail: <NavLink to={`/products/${product.id}`}><CgDetailsMore className="mx-auto" /></NavLink>
+        }
+    });
+
+    const deleteProduct = async (id) => {
+        try {
+            if (window.confirm('Are you sure you want to delete this product?')) {
+                const response = await AuthService.delete(`/api/v1/products/${id}`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    }
+                });
+                if (response.status === 200) {
+                    alert('Product Deleted Successfully');
+                    setProducts(products.filter(product => product.id !== id));
+                }
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    }
 
     useEffect(() => {
         setIsLoading(true);
@@ -82,14 +132,24 @@ function Products() {
 
     return (
         <Content>
-            <h1 className="display-6 mb-2">Products List</h1>
+            <div className="flex items-center justify-between mb-4">
+                <h1 className="text-lg mb-2">Products List</h1>
+                <NavLink to="/products/create" className="btn bg-orange-400 flex text-white items-center justify-center px-4">
+                    <AiOutlinePlus /><span>Add Product</span>
+                </NavLink>
+            </div>
             <MDBDataTableV5
                 hover
-                entriesOptions={[5, 20, 25]}
-                entries={5}
+                entriesOptions={[20, 25, 30, 35, 40, 45, 50]}
+                entries={25}
                 pagesAmount={4}
-                data={{columns, rows}}
+                data={{ columns, rows }}
                 fullPagination
+                responsive
+                striped
+                bordered
+                small
+                className="text-center"
             />
         </Content>
     );

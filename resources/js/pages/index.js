@@ -5,6 +5,7 @@ export {default as NotFoundPage} from './NotFoundPage';
 export {default as Stocks} from './Stocks';
 export {default as Products} from './Products';
 export {default as ProductCreate} from './Products/Create';
+export {default as ProductUpdate} from './Products/Update';
 export {default as Categories} from './Categories';
 export {default as Accounts} from './Accounts';
 

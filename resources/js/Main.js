@@ -12,7 +12,7 @@ import {
     Categories,
     Accounts,
     Stocks,
-    NotFoundPage, ProductCreate
+    NotFoundPage, ProductCreate,ProductUpdate
 } from "./pages";
 import {RequireAuth} from "./features/Authentication/RequireAuth";
 import {AuthStatus} from "./features/Authentication/AuthStatus";
@@ -40,6 +40,11 @@ const Main = () => {
                 <Route path="/products/create" element={
                     <RequireAuth>
                         <ProductCreate/>
+                    </RequireAuth>
+                }/>
+                <Route path="/products/:id" element={
+                    <RequireAuth>
+                        <ProductUpdate/>
                     </RequireAuth>
                 }/>
 

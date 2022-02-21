@@ -15,6 +15,5 @@ mix.js('resources/js/app.js', 'public/js')
     .react()
     .postCss('resources/css/app.css', 'public/css', [
         require("tailwindcss"),
-    ]);
-
-mix.browserSync('crm-system.test');
+    ])
+    .browserSync('crm-system.test')

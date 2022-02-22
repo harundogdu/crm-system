@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\CategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -37,7 +38,11 @@ Route::prefix('/v1')->name('v1.')->group(function () {
             Route::post('/authenticate')->name('authenticate')->uses(AuthController::class . '@authenticate');
         });
 
-        Route::apiResource('products', ProductController::class);
-    });
 
+        Route::apiResources([
+            'products' => ProductController::class,
+            'categories' => CategoryController::class,
+        ]);
+
+    });
 });

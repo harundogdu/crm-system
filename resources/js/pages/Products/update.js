@@ -27,6 +27,9 @@ const Update = () => {
     const [isLoading, setIsLoading] = React.useState(true);
     const [currentProduct, setCurrentProduct] = React.useState({});
     const [generalErrors, setGeneralErrors] = React.useState([]);
+    const [categories, setCategories] = React.useState([]);
+    const [image, setImage] = React.useState(null);
+
     const {
         register,
         handleSubmit,
@@ -34,7 +37,6 @@ const Update = () => {
     } = useForm({
         resolver: yupResolver(schema)
     });
-    const [image, setImage] = React.useState(null);
 
     const updateProduct = async (data) => {
         try {
@@ -96,9 +98,26 @@ const Update = () => {
             }
             setIsLoading(false);
         };
+        const getCategories = async () => {
+            try {
+                const response = await AuthService.get('/api/v1/categories', {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    }
+                });
+                if (response.data.success) {
+                    setCategories(response.data.data);
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        getCategories();
         fetchProduct();
         return () => {
             setCurrentProduct({});
+            setCategories([]);
         }
     }, [])
 
@@ -223,9 +242,9 @@ const Update = () => {
                             defaultValue={currentProduct.category_id}
                         >
                             <option value={0} disabled>Select Category</option>
-                            <option value={1}>Elektronik</option>
-                            <option value={2}>Fashion</option>
-                            <option value={3}>Home</option>
+                            {categories.map((category, index) => (
+                                <option key={index} value={category.id}>{category.name}</option>
+                            ))}
                         </select>
                         {errors.category_id &&
                             <div className="invalid-feedback flex capitalize">

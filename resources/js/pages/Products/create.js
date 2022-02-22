@@ -30,6 +30,7 @@ function Create() {
     });
     let navigate = useNavigate();
     const [image, setImage] = React.useState(null);
+    const [categories, setCategories] = React.useState([]);
 
     const createProduct = async (data) => {
         try {
@@ -66,6 +67,28 @@ function Create() {
             console.log(error);
         }
     };
+
+    React.useEffect(() => {
+        const getCategories = async () => {
+            try {
+                const response = await AuthService.get('/api/v1/categories', {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    }
+                });
+                if (response.data.success) {
+                    setCategories(response.data.data);
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        getCategories();
+        return () => {
+            setCategories([]);
+        }
+    }, [])
 
     return (
         <Content>
@@ -162,9 +185,11 @@ function Create() {
                             defaultValue={0}
                         >
                             <option value={0} disabled>Select Category</option>
-                            <option value={1}>Elektronik</option>
-                            <option value={2}>Fashion</option>
-                            <option value={3}>Home</option>
+                            {
+                                categories.map(category => (
+                                    <option key={category.id} value={category.id}>{category.name}</option>
+                                ))
+                            }
                         </select>
                         {errors.category_id &&
                             <div className="invalid-feedback flex capitalize">

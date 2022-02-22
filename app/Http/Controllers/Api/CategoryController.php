@@ -15,7 +15,19 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return Category::all();
+        try {
+            return response()->json([
+                'success' => true,
+                'data' => Category::all(),
+                'message' => 'Categories retrieved successfully.'
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'data' => [],
+                'message' => $e->getMessage()
+            ], 500);
+        }
     }
 
     /**

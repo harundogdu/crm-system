@@ -55,7 +55,13 @@ function Products() {
         {
             label: 'Created At',
             field: 'created_at',
-            sort: 'asc',
+            sortable: 'true',
+            sortFunction: (a, b, orderBy) => {
+                if (orderBy === 'asc') {
+                    return new Date(a.created_at) - new Date(b.created_at);
+                }
+                return new Date(b.created_at) - new Date(a.created_at);
+            },
             width: 100,
         },
         {
@@ -87,6 +93,9 @@ function Products() {
             detail: <NavLink to={`/products/${product.id}`}><CgDetailsMore className="mx-auto" /></NavLink>
         }
     });
+
+
+
 
     const deleteProduct = async (id) => {
         try {
@@ -142,7 +151,7 @@ function Products() {
             <MDBDataTableV5
                 hover
                 entriesOptions={[20, 25, 30, 35, 40, 45, 50]}
-                entries={25}
+                entries={30}
                 pagesAmount={4}
                 data={{ columns, rows }}
                 fullPagination

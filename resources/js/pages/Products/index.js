@@ -10,6 +10,7 @@ function Products() {
     const [isLoading, setIsLoading] = React.useState(true);
     const [products, setProducts] = React.useState([]);
     const columns = [
+
         {
             label: 'Name',
             field: 'name',

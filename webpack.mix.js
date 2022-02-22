@@ -17,3 +17,7 @@ mix.js('resources/js/app.js', 'public/js')
         require("tailwindcss"),
     ])
     .browserSync('crm-system.test')
+
+if (mix.inProduction()) {
+    mix.version()
+}

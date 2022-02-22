@@ -34,29 +34,52 @@ const Update = () => {
     } = useForm({
         resolver: yupResolver(schema)
     });
+    const [image, setImage] = React.useState(null);
 
     const updateProduct = async (data) => {
+        try {
+            let formData = new FormData();
 
-        AuthService.put(`/api/v1/products/${id}`, data, {
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            if (image) {
+                formData.append('image', image[0]);
             }
-        })
-            .then(response => {
-                if (response.status === 200) {
-                    alert(response.data.message);
-                    navigate('/products');
+
+            formData.append('name', data.name);
+            formData.append('description', data.description);
+            formData.append('barcode', data.barcode);
+            formData.append('brand', data.brand);
+            formData.append('modelCode', data.modelCode);
+            formData.append('category_id', data.category_id);
+            formData.append('buyingPrice', data.buyingPrice);
+            formData.append('sellingPrice', data.sellingPrice);
+            formData.append('taxPrice', data.taxPrice);
+            formData.append('quantity', data.quantity);
+            formData.append('discount', data.discount);
+            formData.append('_method', 'PUT');
+
+            const response = await AuthService.post(`/api/v1/products/${id}`, formData, {
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    "Content-Type": "multipart/form-data",
+                    "enctype": "multipart/form-data"
                 }
-            })
-            .catch(error => {
-                const errors = error.response.data.errors;
-                var array = [];
-                var keys = Object.keys(errors);
-                keys.forEach(function (key) {
-                    array.push(errors[key]);
-                });
-                setGeneralErrors(array);
             });
+            if (response.status === 200) {
+                alert(response.data.message);
+                navigate('/products');
+            }
+
+        } catch (error) {
+            const errors = error.response.data.errors;
+            var array = [];
+            var keys = Object.keys(errors);
+            keys.forEach(function (key) {
+                array.push(errors[key]);
+            });
+            setGeneralErrors(array);
+        }
+
     }
 
     React.useEffect(() => {
@@ -86,6 +109,7 @@ const Update = () => {
     return (
         <Content>
             <h1 className="h3">Update Product</h1>
+
             <div className="row">
                 <div className="col-md-8 mx-auto text-center">
                     {
@@ -107,23 +131,15 @@ const Update = () => {
             <div className="row">
                 <form onSubmit={handleSubmit(updateProduct)} className="col-md-8 mx-auto">
                     <div className="row">
-                        <div className="form-group">
-                            <label htmlFor="image" />
-                            <input
-                                type="text"
-                                className="form-control"
-                                id="image"
-                                placeholder="Image"
-                                {...register('image')}
-                                defaultValue={currentProduct.image}
-                            />
-                            {errors.image &&
-                                <div className="invalid-feedback flex capitalize">
-                                    {errors.image?.message}
-                                </div>
-                            }
+                        <div className="col-md-12">
+                            <div className="form-group">
+                                <label htmlFor="image">Image</label>
+                                <input type="file" name="image" onChange={e => setImage(e.target.files)} className="form-control" accept='image/*' />
+                            </div>
                         </div>
+                    </div>
 
+                    <div className="row">
                         <div className="col-md-6">
                             <div className="form-group">
                                 <label htmlFor="name" />

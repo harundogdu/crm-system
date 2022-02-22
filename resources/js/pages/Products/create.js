@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Content } from "../../components";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
@@ -9,7 +9,6 @@ import { useNavigate } from 'react-router-dom';
 const schema = yup.object().shape({
     name: yup.string().required('Name is required'),
     description: yup.string().nullable(),
-    image: yup.string().nullable(),
     barcode: yup.string().nullable(),
     brand: yup.string().nullable(),
     modelCode: yup.string().nullable(),
@@ -30,15 +29,36 @@ function Create() {
         resolver: yupResolver(schema)
     });
     let navigate = useNavigate();
+    const [image, setImage] = React.useState(null);
 
     const createProduct = async (data) => {
         try {
-            const response = await AuthService.post('/api/v1/products', data,{
+            let formData = new FormData();
+            if (image) {
+                formData.append('image', image[0]);
+            }
+
+            formData.append('name', data.name);
+            formData.append('description', data.description);
+            formData.append('barcode', data.barcode);
+            formData.append('brand', data.brand);
+            formData.append('modelCode', data.modelCode);
+            formData.append('category_id', data.category_id);
+            formData.append('buyingPrice', data.buyingPrice);
+            formData.append('sellingPrice', data.sellingPrice);
+            formData.append('taxPrice', data.taxPrice);
+            formData.append('quantity', data.quantity);
+            formData.append('discount', data.discount);
+
+
+            const response = await AuthService.post('/api/v1/products', formData, {
                 headers: {
-                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    'content-type': 'multipart/form-data',
                 }
             });
-            if(response.data.success){
+            if (response.data.success) {
                 navigate('/products');
                 return;
             }
@@ -47,29 +67,23 @@ function Create() {
         }
     };
 
-
     return (
         <Content>
             <h1 className="h3">Add Product</h1>
             <div className="row">
-                <form onSubmit={handleSubmit(createProduct)} className="col-md-8 mx-auto">
+                <form
+                    onSubmit={handleSubmit(createProduct)}
+                    className="col-md-8 mx-auto"
+                >
                     <div className="row">
-                        <div className="form-group">
-                            <label htmlFor="image" />
-                            <input
-                                type="text"
-                                className="form-control"
-                                id="image"
-                                placeholder="Image"
-                                {...register('image')}
-                            />
-                            {errors.image &&
-                                <div className="invalid-feedback flex capitalize">
-                                    {errors.image?.message}
-                                </div>
-                            }
+                        <div className="col-md-12">
+                            <div className="form-group">
+                                <label htmlFor="image">Image</label>
+                                <input type="file" name="image" onChange={e => setImage(e.target.files)} className="form-control" accept='image/*' />
+                            </div>
                         </div>
-
+                    </div>
+                    <div className="row">
                         <div className="col-md-6">
                             <div className="form-group">
                                 <label htmlFor="name" />
@@ -141,7 +155,6 @@ function Create() {
                             </div>
                         </div>
                     </div>
-
                     <div className="form-group">
                         <label htmlFor="category_id" />
                         <select className="form-control" id="category_id"
@@ -159,7 +172,6 @@ function Create() {
                             </div>
                         }
                     </div>
-
                     <div className="form-group">
                         <label htmlFor="description" />
                         <textarea
@@ -267,7 +279,6 @@ function Create() {
                             </div>
                         </div>
                     </div>
-
                     <div className="flex items-center justify-end mt-2">
                         <button
                             type="submit"

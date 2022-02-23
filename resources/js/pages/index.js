@@ -8,4 +8,6 @@ export {default as ProductCreate} from './Products/Create';
 export {default as ProductUpdate} from './Products/Update';
 export {default as Categories} from './Categories';
 export {default as Accounts} from './Accounts';
+export {default as CategoryCreate} from './Categories/Create';
+export {default as CategoryUpdate} from './Categories/Update';
 

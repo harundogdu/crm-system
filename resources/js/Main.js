@@ -12,79 +12,94 @@ import {
     Categories,
     Accounts,
     Stocks,
-    NotFoundPage, ProductCreate,ProductUpdate
+    NotFoundPage,
+    ProductCreate,
+    ProductUpdate,
+    CategoryCreate,
+    CategoryUpdate
 } from "./pages";
-import {RequireAuth} from "./features/Authentication/RequireAuth";
-import {AuthStatus} from "./features/Authentication/AuthStatus";
-import {Footer, Navbar} from "./components";
-import {useAuth} from "./features/Authentication/AuthContext";
+import { RequireAuth } from "./features/Authentication/RequireAuth";
+import { AuthStatus } from "./features/Authentication/AuthStatus";
+import { Footer, Navbar } from "./components";
+import { useAuth } from "./features/Authentication/AuthContext";
 
 const Main = () => {
-    const {isAuthenticated} = useAuth();
+    const { isAuthenticated } = useAuth();
     return (
         <div className="flex flex-1 flex-col h-full">
-            {isAuthenticated && <Navbar/>}
+            {isAuthenticated && <Navbar />}
             <Routes>
                 <Route path="/" element={
                     <RequireAuth>
-                        <Home/>
+                        <Home />
                     </RequireAuth>
-                }/>
+                } />
 
                 {/*Products*/}
                 <Route path="/products" element={
                     <RequireAuth>
-                        <Products/>
+                        <Products />
                     </RequireAuth>
-                }/>
+                } />
                 <Route path="/products/create" element={
                     <RequireAuth>
-                        <ProductCreate/>
+                        <ProductCreate />
                     </RequireAuth>
-                }/>
+                } />
                 <Route path="/products/:id" element={
                     <RequireAuth>
-                        <ProductUpdate/>
+                        <ProductUpdate />
                     </RequireAuth>
-                }/>
+                } />
 
                 {/*Categories*/}
                 <Route path="/categories" element={
                     <RequireAuth>
-                        <Categories/>
+                        <Categories />
                     </RequireAuth>
-                }/>
+                } />
+                <Route path="/categories/create" element={
+                    <RequireAuth>
+                        <CategoryCreate />
+                    </RequireAuth>
+                } />
+                <Route path="/categories/:id" element={
+                    <RequireAuth>
+                        <CategoryUpdate />
+                    </RequireAuth>
+                } />
+
                 {/*Accounts*/}
                 <Route path="/accounts" element={
                     <RequireAuth>
-                        <Accounts/>
+                        <Accounts />
                     </RequireAuth>
-                }/>
+                } />
 
                 {/*Stocks*/}
                 <Route path="/stocks" element={
                     <RequireAuth>
-                        <Stocks/>
+                        <Stocks />
                     </RequireAuth>
-                }/>
+                } />
 
                 {/*Authentication*/}
                 <Route path="/login" element={
                     <AuthStatus>
-                        <Login/>
+                        <Login />
                     </AuthStatus>
-                }/>
+                } />
                 <Route path="/register" element={
                     <AuthStatus>
-                        <Register/>
+                        <Register />
                     </AuthStatus>
-                }/>
+                } />
                 {/*NotFoundPage*/}
                 <Route path="*" element={
-                    <NotFoundPage/>
-                }/>
+                    <NotFoundPage />
+                } />
             </Routes>
-            {isAuthenticated && <Footer/>}
+            {isAuthenticated && <Footer />}
         </div>
     )
         ;

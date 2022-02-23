@@ -139,7 +139,7 @@ function Products() {
 
     return (
         <Content>
-             <Helmet>
+            <Helmet>
                 <title>CRM - Product Menagement</title>
             </Helmet>
             <div className="flex items-center justify-between mb-4">
@@ -150,8 +150,8 @@ function Products() {
             </div>
             <MDBDataTableV5
                 hover
-                entriesOptions={[20, 25, 30, 35, 40, 45, 50]}
-                entries={30}
+                entriesOptions={[5, 10, 15, 20, 25, 30, 35, 40, 45, 50]}
+                entries={10}
                 pagesAmount={4}
                 data={{ columns, rows }}
                 fullPagination

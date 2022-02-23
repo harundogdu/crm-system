@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryStoreRequest;
+use App\Http\Requests\CategoryUpdateRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -18,7 +20,7 @@ class CategoryController extends Controller
         try {
             return response()->json([
                 'success' => true,
-                'data' => Category::all(),
+                'data' => Category::with(['products'])->withCount('products')->orderByDesc('created_at')->get(),
                 'message' => 'Categories retrieved successfully.'
             ], 200);
         } catch (\Exception $e) {
@@ -36,9 +38,26 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryStoreRequest $request)
     {
-        //
+        try {
+            $user_id = auth()->user()->id;
+            $category = Category::create([
+                'name' => $request->name,
+                'user_id' => $user_id
+            ]);
+            return response()->json([
+                'success' => true,
+                'data' => $category,
+                'message' => 'Category created successfully.'
+            ], 201);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'data' => [],
+                'message' => $e->getMessage()
+            ], 500);
+        }
     }
 
     /**
@@ -49,7 +68,19 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        try {
+            return response()->json([
+                'success' => true,
+                'data' => Category::with(['products'])->withCount('products')->orderByDesc('created_at')->findOrFail($id),
+                'message' => 'Categories retrieved successfully.'
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'data' => [],
+                'message' => $e->getMessage()
+            ], 500);
+        }
     }
 
     /**
@@ -59,9 +90,28 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryUpdateRequest $request, $id)
     {
-        //
+        try {
+            $user_id = auth()->user()->id;
+            $category = Category::findOrFail($id);
+            $category->update([
+                'name' => $request->name,
+                'user_id' => $user_id
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'data' => $category,
+                'message' => 'Category updated successfully.'
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'data' => [],
+                'message' => $e->getMessage()
+            ], 500);
+        }
     }
 
     /**
@@ -72,6 +122,20 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $category = Category::findOrFail($id);
+            $category->delete();
+            return response()->json([
+                'success' => true,
+                'data' => [],
+                'message' => 'Category deleted successfully.'
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'data' => [],
+                'message' => $e->getMessage()
+            ], 500);
+        }
     }
 }

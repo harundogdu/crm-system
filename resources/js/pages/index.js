@@ -10,4 +10,5 @@ export {default as Categories} from './Categories';
 export {default as Accounts} from './Accounts';
 export {default as CategoryCreate} from './Categories/Create';
 export {default as CategoryUpdate} from './Categories/Update';
-
+export {default as AccountCreate} from './Accounts/Create';
+export {default as AccountUpdate} from './Accounts/Update';

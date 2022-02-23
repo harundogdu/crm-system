@@ -16,7 +16,7 @@ class AccountController extends Controller
     public function index()
     {
         try {
-            $users = User::with(['categories'])->withCount(['categories'])->get();
+            $users = User::with(['categories', 'products'])->withCount(['categories', 'products'])->get();
             return response()->json([
                 'success' => true,
                 'data' => $users,
@@ -35,7 +35,24 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+            ]);
+            return response()->json([
+                'success' => true,
+                'data' => $user,
+                'message' => 'User created successfully.'
+            ], 201);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'data' => null,
+                'message' => 'User could not be created.'
+            ], 500);
+        }
     }
 
     /**
@@ -46,7 +63,20 @@ class AccountController extends Controller
      */
     public function show($id)
     {
-        //
+        try {
+            $user = User::findOrFail($id);
+            return response()->json([
+                'success' => true,
+                'data' => $user,
+                'message' => 'User retrieved successfully.'
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'data' => null,
+                'message' => 'User could not be retrieved.'
+            ], 500);
+        }
     }
 
     /**
@@ -58,7 +88,21 @@ class AccountController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $user = User::findOrFail($id);
+            $user->update($request->all());
+            return response()->json([
+                'success' => true,
+                'data' => $user,
+                'message' => 'User updated successfully.'
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'data' => null,
+                'message' => 'User could not be updated.'
+            ], 500);
+        }
     }
 
     /**
@@ -69,6 +113,20 @@ class AccountController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $user = User::findOrFail($id);
+            $user->delete();
+            return response()->json([
+                'success' => true,
+                'data' => $user,
+                'message' => 'User deleted successfully.'
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'data' => null,
+                'message' => 'User could not be deleted.'
+            ], 500);
+        }
     }
 }

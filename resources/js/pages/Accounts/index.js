@@ -16,9 +16,14 @@ function Accounts() {
             width: 150,
         },
         {
-            label: 'Category Count',
+            label: 'Created Category Count',
             field: 'categoryCount',
             width: 270,
+        },
+        {
+            label: 'Created Product Count',
+            field: 'productCount',
+            width: 200,
         },
         {
             label: 'Created At',
@@ -49,6 +54,7 @@ function Accounts() {
         return {
             'name': account.name,
             'categoryCount': account.categories_count,
+            'productCount': account.products_count,
             'created_at': account.created_at,
             delete: <button onClick={() => deleteAccount(account.id)}><AiOutlineDelete /></button>,
             detail: <NavLink to={`/accounts/${account.id}`}><CgDetailsMore className="mx-auto" /></NavLink>
@@ -57,20 +63,20 @@ function Accounts() {
 
     const deleteAccount = (id) => {
         window.confirm('Are you sure you want to delete this account?') &&
-        AuthService.delete(`/api/v1/accounts/${id}`, {
-            headers: {
-                'Accept': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            }
-        })
-            .then(response => {
-                if (response.data.success) {
-                    setAccounts(accounts.filter(account => account.id !== id));
+            AuthService.delete(`/api/v1/accounts/${id}`, {
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 }
             })
-            .catch(error => {
-                console.log(error);
-            });
+                .then(response => {
+                    if (response.data.success) {
+                        setAccounts(accounts.filter(account => account.id !== id));
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                });
     }
 
     React.useEffect(() => {
@@ -98,7 +104,7 @@ function Accounts() {
         <Content>
             <div className="flex items-center justify-between mb-4">
                 <h1 className="text-lg mb-2">Account List</h1>
-                <NavLink to="/categories/create" className="btn bg-orange-400 flex text-white items-center justify-center px-4">
+                <NavLink to="/accounts/create" className="btn bg-orange-400 flex text-white items-center justify-center px-4">
                     <AiOutlinePlus /><span>Add Account</span>
                 </NavLink>
             </div>

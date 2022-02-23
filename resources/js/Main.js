@@ -16,7 +16,9 @@ import {
     ProductCreate,
     ProductUpdate,
     CategoryCreate,
-    CategoryUpdate
+    CategoryUpdate,
+    AccountCreate,
+    AccountUpdate
 } from "./pages";
 import { RequireAuth } from "./features/Authentication/RequireAuth";
 import { AuthStatus } from "./features/Authentication/AuthStatus";
@@ -73,6 +75,16 @@ const Main = () => {
                 <Route path="/accounts" element={
                     <RequireAuth>
                         <Accounts />
+                    </RequireAuth>
+                } />
+                <Route path="/accounts/create" element={
+                    <RequireAuth>
+                        <AccountCreate />
+                    </RequireAuth>
+                } />
+                <Route path="/accounts/:id" element={
+                    <RequireAuth>
+                        <AccountUpdate />
                     </RequireAuth>
                 } />
 

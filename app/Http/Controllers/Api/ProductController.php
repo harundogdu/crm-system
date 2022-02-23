@@ -43,7 +43,7 @@ class ProductController extends Controller
                 $image->move(public_path('/uploads/images/'), $fileName);
                 $all['image'] = $fileName;
             }
-
+            $all['user_id'] = auth()->user()->id;
             $product = Product::create($all);
 
             return response()->json([
@@ -106,7 +106,7 @@ class ProductController extends Controller
                 $image->move(public_path('uploads' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR), $fileName);
                 $input['image'] = $fileName;
             }
-
+            $input['user_id'] = auth()->user()->id;
             $product->update($input);
 
             return response()->json([

@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from 'react-router-dom';
 import { Content } from '../../components';
 import { AuthService } from '../../services/AuthService';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 const schema = yup.object().shape({
     name: yup.string().required('Name is required'),
@@ -23,6 +25,7 @@ function Update() {
     });
     let navigate = useNavigate();
     let { id } = useParams();
+    const MySwal = withReactContent(Swal)
     const [isLoading, setIsLoading] = React.useState(true);
     const [currentAccount, setCurrentAccount] = React.useState({});
     const [generalErrors, setGeneralErrors] = React.useState([]);
@@ -43,6 +46,12 @@ function Update() {
                 }
             });
             if (response.data.success) {
+                await MySwal.fire({
+                    title: <strong>{response.data.message}</strong>,
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1000
+                })
                 navigate('/accounts');
                 return;
             }
@@ -84,7 +93,7 @@ function Update() {
 
     return (
         <Content>
-            <h1 className="h3">Add Account</h1>
+            <h1 className="h3">Update Account</h1>
             <div className="row">
                 <div className="col-md-8 mx-auto text-center">
                     {
@@ -169,7 +178,7 @@ function Update() {
                             type="submit"
                             className="btn bg-orange-400 mt-2 text-white w-full"
                         >
-                            Add Account
+                            Update Account
                         </button>
                     </div>
                 </form>

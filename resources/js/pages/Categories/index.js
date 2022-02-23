@@ -6,8 +6,11 @@ import { NavLink } from 'react-router-dom';
 import { Content, Loading } from "../../components";
 import { AuthService } from '../../services/AuthService';
 import { Helmet } from 'react-helmet';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 function Categories() {
+    const MySwal = withReactContent(Swal)
     const [isLoading, setIsLoading] = React.useState(true);
     const [categories, setCategories] = React.useState([]);
     const columns = [
@@ -56,8 +59,18 @@ function Categories() {
         }
     });
 
-    const deleteCategory = (id) => {
-        window.confirm('Are you sure you want to delete this category?') &&
+    const deleteCategory = async (id) => {
+        const status = await MySwal.fire({
+            title: <strong>Are you sure you want to delete this product?</strong>,
+            confirmButtonText: 'Yes, delete it!',
+            showCancelButton: true,
+            cancelButtonText: 'No, keep it',
+            html:
+                '<p>You won\'t be able to revert this!</p>',
+            icon: 'warning',
+        })
+
+        status.isConfirmed &&
             AuthService.delete(`/api/v1/categories/${id}`, {
                 headers: {
                     'Accept': 'application/json',
@@ -67,10 +80,21 @@ function Categories() {
                 .then(response => {
                     if (response.data.success) {
                         setCategories(categories.filter(category => category.id !== id));
+                        MySwal.fire({
+                            title: <strong>Category was deleted successfully!</strong>,
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 1000
+                        })
                     }
                 })
                 .catch(error => {
-                    console.log(error);
+                    MySwal.fire({
+                        title: <strong>{error.response.data.message}</strong>,
+                        icon: 'error',
+                        showConfirmButton: false,
+                        timer: 1000
+                    })
                 });
     }
 

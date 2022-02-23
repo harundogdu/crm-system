@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import { AuthService } from "../../services/AuthService";
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 const schema = yup.object().shape({
     name: yup.string().required('Name is required'),
@@ -21,6 +23,7 @@ const schema = yup.object().shape({
 });
 
 function Create() {
+    let navigate = useNavigate();
     const {
         register,
         handleSubmit,
@@ -28,7 +31,7 @@ function Create() {
     } = useForm({
         resolver: yupResolver(schema)
     });
-    let navigate = useNavigate();
+    const MySwal = withReactContent(Swal)
     const [image, setImage] = React.useState(null);
     const [categories, setCategories] = React.useState([]);
     const [generalErrors, setGeneralErrors] = React.useState([]);
@@ -61,11 +64,23 @@ function Create() {
                 }
             });
             if (response.data.success) {
+                await MySwal.fire({
+                    title: <strong>{response.data.message}</strong>,
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1000
+                })
                 navigate('/products');
                 return;
             }
         } catch (error) {
-            console.log(error);
+            const errors = error.response.data.errors;
+            var array = [];
+            var keys = Object.keys(errors);
+            keys.forEach(function (key) {
+                array.push(errors[key]);
+            });
+            setGeneralErrors(array);
         }
     };
 

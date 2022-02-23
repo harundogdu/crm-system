@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 import { Content } from '../../components';
 import { AuthService } from '../../services/AuthService';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 const schema = yup.object().shape({
   name: yup.string().required('Name is required'),
@@ -22,6 +24,7 @@ function Create() {
     resolver: yupResolver(schema)
   });
   let navigate = useNavigate();
+  const MySwal = withReactContent(Swal)
   const [generalErrors, setGeneralErrors] = React.useState([]);
 
   const createAccount = async (data) => {
@@ -39,6 +42,12 @@ function Create() {
         }
       });
       if (response.data.success) {
+        await MySwal.fire({
+          title: <strong>{response.data.message}</strong>,
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1000
+      })
         navigate('/accounts');
         return;
       }

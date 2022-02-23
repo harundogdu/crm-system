@@ -5,6 +5,8 @@ import { AuthService } from '../../services/AuthService';
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 const schema = yup.object().shape({
     name: yup.string().required('Name is required'),
@@ -24,6 +26,7 @@ const schema = yup.object().shape({
 const Update = () => {
     let { id } = useParams();
     let navigate = useNavigate();
+    const MySwal = withReactContent(Swal)
     const [isLoading, setIsLoading] = React.useState(true);
     const [currentProduct, setCurrentProduct] = React.useState({});
     const [generalErrors, setGeneralErrors] = React.useState([]);
@@ -68,7 +71,12 @@ const Update = () => {
                 }
             });
             if (response.status === 200) {
-                alert(response.data.message);
+                await MySwal.fire({
+                    title: <strong>{response.data.message}</strong>,
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1000
+                })
                 navigate('/products');
             }
 

@@ -2,12 +2,15 @@ import React, { useEffect } from 'react';
 import { Content, Loading } from "../../components";
 import { AuthService } from "../../services/AuthService";
 import { MDBDataTableV5 } from 'mdbreact';
-import { AiOutlineDelete, AiOutlineEdit, AiOutlinePlus } from "react-icons/ai";
-import { NavLink, useNavigate } from "react-router-dom";
+import { AiOutlineDelete, AiOutlinePlus } from "react-icons/ai";
+import { NavLink } from "react-router-dom";
 import { CgDetailsMore } from 'react-icons/cg';
 import { Helmet } from "react-helmet";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 function Products() {
+    const MySwal = withReactContent(Swal)
     const [isLoading, setIsLoading] = React.useState(true);
     const [products, setProducts] = React.useState([]);
     const columns = [
@@ -97,7 +100,17 @@ function Products() {
 
     const deleteProduct = async (id) => {
         try {
-            if (window.confirm('Are you sure you want to delete this product?')) {
+            const status = await MySwal.fire({
+                title: <strong>Are you sure you want to delete this product?</strong>,
+                confirmButtonText: 'Yes, delete it!',
+                showCancelButton: true,
+                cancelButtonText: 'No, keep it',
+                html:
+                    '<p>You won\'t be able to revert this!</p>',
+                icon: 'warning',
+            })
+
+            if (status.isConfirmed) {
                 const response = await AuthService.delete(`/api/v1/products/${id}`, {
                     headers: {
                         'Content-Type': 'application/json',
@@ -105,12 +118,22 @@ function Products() {
                     }
                 });
                 if (response.status === 200) {
-                    alert('Product Deleted Successfully');
                     setProducts(products.filter(product => product.id !== id));
+                    await MySwal.fire({
+                        title: <strong>Product was deleted successfully!</strong>,
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 1000
+                    })
                 }
             }
-        } catch (err) {
-            console.log(err);
+        } catch (error) {
+            await MySwal.fire({
+                title: <strong>{error.response.data.message}</strong>,
+                icon: 'error',
+                showConfirmButton: false,
+                timer: 1000
+            })
         }
     }
 

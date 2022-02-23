@@ -5,12 +5,17 @@ import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from 'react-router-dom';
 import { Content, Loading } from '../../components';
 import { AuthService } from '../../services/AuthService';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 const schema = yup.object().shape({
     name: yup.string().required('Name is required'),
 });
 
 function Update() {
+    let navigate = useNavigate();
+    let { id } = useParams();
+    const MySwal = withReactContent(Swal)
     const {
         register,
         handleSubmit,
@@ -18,8 +23,6 @@ function Update() {
     } = useForm({
         resolver: yupResolver(schema)
     });
-    let navigate = useNavigate();
-    let { id } = useParams();
     const [currentCategory, setCurrentCategory] = React.useState({});
     const [generalErrors, setGeneralErrors] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(true);
@@ -38,6 +41,12 @@ function Update() {
                 }
             });
             if (response.data.success) {
+                await MySwal.fire({
+                    title: <strong>{response.data.message}</strong>,
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1000
+                })
                 navigate('/categories');
                 return;
             }

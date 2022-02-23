@@ -259,7 +259,7 @@ export default function Home() {
                                 />
                             </div>
                             <div className="card-footer">
-                                <small className="text-muted text-center">Most Popular Category List</small>
+                                <small className="text-muted text-center">Most Popular Products List</small>
                             </div>
                         </div>
                     </div>

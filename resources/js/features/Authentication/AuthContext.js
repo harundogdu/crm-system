@@ -1,10 +1,10 @@
-import {createContext, useContext, useEffect, useState} from "react";
-import {AuthService} from "../../services/AuthService";
-import {useNavigate} from "react-router-dom";
+import { createContext, useContext, useEffect, useState } from "react";
+import { AuthService } from "../../services/AuthService";
+import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 
-export const AuthProvider = ({children}) => {
+export const AuthProvider = ({ children }) => {
     let navigate = useNavigate();
     const [isAuthenticated, setIsAuthenticated] = useState(false)
     const [isAuthLoading, setIsAuthLoading] = useState(false)

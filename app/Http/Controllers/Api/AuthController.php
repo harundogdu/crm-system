@@ -139,4 +139,24 @@ class AuthController extends Controller
             ], 500);
         }
     }
+
+    public function updateUser(Request $request){
+        try {
+            $user = $request->user();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = bcrypt($request->password);
+            $user->save();
+            return response()->json([
+                'success' => true,
+                'user' => $user,
+                'message' => 'User updated successfully'
+            ]);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'success' => false,
+                'message' => $exception->getMessage()
+            ], 500);
+        }
+    }
 }

@@ -82,7 +82,7 @@ const Main = () => {
                         <AccountCreate />
                     </RequireAuth>
                 } />
-                <Route path="/accounts/:id" element={
+                <Route path="/profile" element={
                     <RequireAuth>
                         <AccountUpdate />
                     </RequireAuth>

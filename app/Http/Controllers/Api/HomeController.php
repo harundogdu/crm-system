@@ -13,7 +13,37 @@ class HomeController extends Controller
     public function index()
     {
         try {
-            $endTime = now()->addMinutes(10);
+            if (Cache::has('statistics')) {
+                $statistics = Cache::get('statistics');
+            } else {
+
+                $mostPopularCategories = Category::withCount('products')
+                    ->orderBy('products_count', 'desc')
+                    ->orderBy('created_at', 'desc')
+                    ->take(5)
+                    ->get();
+
+                $mostPopularProducts = Product::orderBy('created_at', 'desc')
+                    ->take(10)
+                    ->select(['name', 'created_at', 'quantity'])
+                    ->get();
+
+                $statistics = [
+                    'users' => User::count(),
+                    'products' => Product::count(),
+                    'categories' => Category::count(),
+                    'totalOperation' => 10,
+                    'stock' => Product::sum('quantity'),
+                    'unStock' => Product::where('quantity', 0)->count(),
+                    'mostPopularCategories' => $mostPopularCategories,
+                    'mostPopularProducts' => $mostPopularProducts,
+                ];
+
+                Cache::put('statistics', $statistics, 60);
+            }
+
+
+           /*  $endTime = now()->addMinutes(10);
 
             $statistics = Cache::remember('statistics', $endTime, function () {
 
@@ -38,7 +68,7 @@ class HomeController extends Controller
                     'mostPopularCategories' => $mostPopularCategories,
                     'mostPopularProducts' => $mostPopularProducts,
                 ];
-            });
+            }); */
 
             return response()->json([
                 'success' => true,

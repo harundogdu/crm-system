@@ -1,7 +1,6 @@
 import { MDBDataTableV5 } from 'mdbreact';
 import React from 'react';
 import { AiOutlineDelete, AiOutlinePlus } from 'react-icons/ai';
-import { CgDetailsMore } from 'react-icons/cg';
 import { NavLink } from 'react-router-dom';
 import { Content, Loading } from "../../components";
 import { AuthService } from '../../services/AuthService';
@@ -45,13 +44,6 @@ function Accounts() {
             field: 'delete',
             sort: 'disabled',
             width: 100,
-        },
-        {
-            label: 'Detail',
-            field: 'detail',
-            sort: 'disabled',
-            width: 100,
-
         }
     ];
     const rows = accounts.map(account => {
@@ -61,7 +53,6 @@ function Accounts() {
             'productCount': account.products_count,
             'created_at': account.created_at,
             delete: <button onClick={() => deleteAccount(account.id)}><AiOutlineDelete /></button>,
-            detail: <NavLink to={`/accounts/${account.id}`}><CgDetailsMore className="mx-auto" /></NavLink>
         }
     });
 

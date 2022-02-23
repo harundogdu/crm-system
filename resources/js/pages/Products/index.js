@@ -74,13 +74,7 @@ function Products() {
             sort: 'disabled',
             width: 100,
         },
-        {
-            label: 'Detail',
-            field: 'detail',
-            sort: 'disabled',
-            width: 100,
-
-        }
+       
     ]
     const rows = products.map(product => {
         return {

@@ -3,10 +3,11 @@ import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from 'react-router-dom';
-import { Content } from '../../components';
+import { Content, Loading } from '../../components';
 import { AuthService } from '../../services/AuthService';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import { useAuth } from '../../features/Authentication/AuthContext';
 
 const schema = yup.object().shape({
     name: yup.string().required('Name is required'),
@@ -24,10 +25,10 @@ function Update() {
         resolver: yupResolver(schema)
     });
     let navigate = useNavigate();
-    let { id } = useParams();
     const MySwal = withReactContent(Swal)
-    const [isLoading, setIsLoading] = React.useState(true);
-    const [currentAccount, setCurrentAccount] = React.useState({});
+    const {user , isAuthLoading, setUser} = useAuth();
+    //const [isLoading, setIsLoading] = React.useState(true);
+    /*const [currentAccount, setCurrentAccount] = React.useState({}); */
     const [generalErrors, setGeneralErrors] = React.useState([]);
 
     const updateAccount = async (data) => {
@@ -38,7 +39,7 @@ function Update() {
             formData.append('password', data.password);
             formData.append('_method', 'PUT');
 
-            const response = await AuthService.post('/api/v1/accounts', formData, {
+            const response = await AuthService.post('/api/v1/auth/updateUser', formData, {
                 headers: {
                     'Accept': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -52,7 +53,8 @@ function Update() {
                     showConfirmButton: false,
                     timer: 1000
                 })
-                navigate('/accounts');
+                setUser(response.data.user)
+                navigate('/');
                 return;
             }
         } catch (error) {
@@ -66,9 +68,9 @@ function Update() {
         }
     };
 
-    React.useEffect(() => {
+    /* React.useEffect(() => {
         const fetchAccount = async () => {
-            const response = await AuthService.get(`/api/v1/accounts/${id}`,{
+            const response = await AuthService.get(`/api/v1/accounts/${user.id}`,{
                 headers: {
                     'Accept': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -82,18 +84,16 @@ function Update() {
             setCurrentAccount({});
         }
     }, []);
-
-    if (isLoading) {
+ */
+    if (isAuthLoading) {
         return (
-            <div>
-                <h1>Loading...</h1>
-            </div>
+            <Loading />
         )
     }
 
     return (
         <Content>
-            <h1 className="h3">Update Account</h1>
+            <h1 className="h3">Profile</h1>
             <div className="row">
                 <div className="col-md-8 mx-auto text-center">
                     {
@@ -123,7 +123,7 @@ function Update() {
                                 <label htmlFor="name">Name</label>
                                 <input type="text" name="name" className="form-control"
                                     {...register('name')}
-                                    defaultValue={currentAccount.name}
+                                    defaultValue={user.name}
                                 />
                                 {errors.name &&
                                     <div className="invalid-feedback flex capitalize">
@@ -138,7 +138,7 @@ function Update() {
                                 <label htmlFor="email">Email</label>
                                 <input type="email" name="email" className="form-control"
                                     {...register('email')}
-                                    defaultValue={currentAccount.email}
+                                    defaultValue={user.email}
                                 />
                                 {errors.email &&
                                     <div className="invalid-feedback flex capitalize">
@@ -178,7 +178,7 @@ function Update() {
                             type="submit"
                             className="btn bg-orange-400 mt-2 text-white w-full"
                         >
-                            Update Account
+                            Update Profile
                         </button>
                     </div>
                 </form>

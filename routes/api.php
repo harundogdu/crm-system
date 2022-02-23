@@ -38,6 +38,7 @@ Route::prefix('/v1')->name('v1.')->group(function () {
             Route::post('/logout')->name('logout')->uses(AuthController::class . '@logout');
             Route::post('/user')->name('user')->uses(AuthController::class . '@user');
             Route::post('/authenticate')->name('authenticate')->uses(AuthController::class . '@authenticate');
+            Route::put('/updateUser')->name('updateUser')->uses(AuthController::class . '@updateUser');
         });
 
 

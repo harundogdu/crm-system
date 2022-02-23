@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AccountController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\HomeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -46,5 +47,6 @@ Route::prefix('/v1')->name('v1.')->group(function () {
             'accounts' => AccountController::class,
         ]);
 
+        Route::get('/home', HomeController::class . '@index')->name('home');
     });
 });

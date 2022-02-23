@@ -31,6 +31,7 @@ function Create() {
     let navigate = useNavigate();
     const [image, setImage] = React.useState(null);
     const [categories, setCategories] = React.useState([]);
+    const [generalErrors, setGeneralErrors] = React.useState([]);
 
     const createProduct = async (data) => {
         try {
@@ -81,7 +82,13 @@ function Create() {
                     setCategories(response.data.data);
                 }
             } catch (error) {
-                console.log(error);
+                const errors = error.response.data.errors;
+                var array = [];
+                var keys = Object.keys(errors);
+                keys.forEach(function (key) {
+                    array.push(errors[key]);
+                });
+                setGeneralErrors(array);
             }
         }
         getCategories();
@@ -93,6 +100,24 @@ function Create() {
     return (
         <Content>
             <h1 className="h3">Add Product</h1>
+            <div className="row">
+                <div className="col-md-8 mx-auto text-center">
+                    {
+                        generalErrors.length > 0 &&
+                        (
+                            <div className="alert alert-danger">
+                                <ul>
+                                    {generalErrors.map((error, index) => {
+                                        return (
+                                            <li key={index}>{error}</li>
+                                        )
+                                    })}
+                                </ul>
+                            </div>
+                        )
+                    }
+                </div>
+            </div>
             <div className="row">
                 <form
                     onSubmit={handleSubmit(createProduct)}

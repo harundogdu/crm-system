@@ -94,9 +94,6 @@ function Products() {
         }
     });
 
-
-
-
     const deleteProduct = async (id) => {
         try {
             if (window.confirm('Are you sure you want to delete this product?')) {
@@ -117,7 +114,6 @@ function Products() {
     }
 
     useEffect(() => {
-        setIsLoading(true);
         const getProducts = async () => {
             const response = await AuthService.get('/api/v1/products', {
                 headers: {

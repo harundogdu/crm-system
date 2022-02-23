@@ -1,9 +1,10 @@
-import {Link, NavLink} from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import * as yup from "yup";
-import {useForm} from "react-hook-form";
-import {yupResolver} from "@hookform/resolvers/yup";
-import {useAuth} from "../../features/Authentication/AuthContext";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useAuth } from "../../features/Authentication/AuthContext";
 import RegisterImage from "../../assets/images/register.png";
+import { Helmet } from "react-helmet";
 
 const schema = yup.object().shape({
     name: yup.string().required("Name is required"),
@@ -16,17 +17,20 @@ export default function Register() {
     const {
         register,
         handleSubmit,
-        formState: {errors, isValid, touchedFields}
+        formState: { errors, isValid, touchedFields }
     } = useForm({
         resolver: yupResolver(schema)
     });
-    const {register: RegisterSubmit} = useAuth();
+    const { register: RegisterSubmit } = useAuth();
 
     return (
         <div className="flex justify-center align-items-center h-screen bg-gray-100">
+            <Helmet>
+                <title>CRM - Register</title>
+            </Helmet>
             <div className="row p-4 rounded-lg shadow-lg bg-white col-md-8 w-[500px]">
                 <div className="flex flex-col items-center justify-evenly">
-                    <img className="h-60" src={RegisterImage} alt="Login Image"/>
+                    <img className="h-60" src={RegisterImage} alt="Login Image" />
                     <h1 className="h3 text-orange-400">Welcome to Register Page</h1>
                 </div>
 

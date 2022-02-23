@@ -5,6 +5,7 @@ import { CgDetailsMore } from 'react-icons/cg';
 import { NavLink } from 'react-router-dom';
 import { Content, Loading } from "../../components";
 import { AuthService } from '../../services/AuthService';
+import { Helmet } from 'react-helmet';
 
 function Categories() {
     const [isLoading, setIsLoading] = React.useState(true);
@@ -57,20 +58,20 @@ function Categories() {
 
     const deleteCategory = (id) => {
         window.confirm('Are you sure you want to delete this category?') &&
-        AuthService.delete(`/api/v1/categories/${id}`, {
-            headers: {
-                'Accept': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            }
-        })
-            .then(response => {
-                if (response.data.success) {
-                    setCategories(categories.filter(category => category.id !== id));
+            AuthService.delete(`/api/v1/categories/${id}`, {
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 }
             })
-            .catch(error => {
-                console.log(error);
-            });
+                .then(response => {
+                    if (response.data.success) {
+                        setCategories(categories.filter(category => category.id !== id));
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                });
     }
 
     React.useEffect(() => {
@@ -96,6 +97,9 @@ function Categories() {
 
     return (
         <Content>
+            <Helmet>
+                <title>CRM - Category Menagement</title>
+            </Helmet>
             <div className="flex items-center justify-between mb-4">
                 <h1 className="text-lg mb-2">Category List</h1>
                 <NavLink to="/categories/create" className="btn bg-orange-400 flex text-white items-center justify-center px-4">

@@ -5,6 +5,7 @@ import { MDBDataTableV5 } from 'mdbreact';
 import { AiOutlineDelete, AiOutlineEdit, AiOutlinePlus } from "react-icons/ai";
 import { NavLink, useNavigate } from "react-router-dom";
 import { CgDetailsMore } from 'react-icons/cg';
+import { Helmet } from "react-helmet";
 
 function Products() {
     const [isLoading, setIsLoading] = React.useState(true);
@@ -138,6 +139,9 @@ function Products() {
 
     return (
         <Content>
+             <Helmet>
+                <title>CRM - Product Menagement</title>
+            </Helmet>
             <div className="flex items-center justify-between mb-4">
                 <h1 className="text-lg mb-2">Products List</h1>
                 <NavLink to="/products/create" className="btn bg-orange-400 flex text-white items-center justify-center px-4">

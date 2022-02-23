@@ -5,6 +5,7 @@ import { CgDetailsMore } from 'react-icons/cg';
 import { NavLink } from 'react-router-dom';
 import { Content, Loading } from "../../components";
 import { AuthService } from '../../services/AuthService';
+import { Helmet } from "react-helmet";
 
 function Accounts() {
     const [isLoading, setIsLoading] = React.useState(true);
@@ -102,6 +103,9 @@ function Accounts() {
 
     return (
         <Content>
+            <Helmet>
+                <title>CRM - Account Menagement</title>
+            </Helmet>
             <div className="flex items-center justify-between mb-4">
                 <h1 className="text-lg mb-2">Account List</h1>
                 <NavLink to="/accounts/create" className="btn bg-orange-400 flex text-white items-center justify-center px-4">

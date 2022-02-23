@@ -11641,6 +11641,19 @@ Ensure the default browser behavior of the `hidden` attribute.
 html, body, #root {
         height: 100vh;
     }
+.absolute{
+  position: absolute;
+}
+.inset-0{
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+.mx-auto{
+  margin-left: auto;
+  margin-right: auto;
+}
 .my-3{
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
@@ -11648,13 +11661,6 @@ html, body, #root {
 .my-2{
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
-}
-.mx-auto{
-  margin-left: auto;
-  margin-right: auto;
-}
-.mt-4{
-  margin-top: 1rem;
 }
 .mt-2{
   margin-top: 0.5rem;
@@ -11664,6 +11670,9 @@ html, body, #root {
 }
 .mb-2{
   margin-bottom: 0.5rem;
+}
+.mt-4{
+  margin-top: 1rem;
 }
 .flex{
   display: flex;
@@ -11677,11 +11686,11 @@ html, body, #root {
 .h-60{
   height: 15rem;
 }
-.w-\[500px\]{
-  width: 500px;
-}
 .w-full{
   width: 100%;
+}
+.w-\[500px\]{
+  width: 500px;
 }
 .flex-1{
   flex: 1 1 0%;
@@ -11707,6 +11716,10 @@ html, body, #root {
 .rounded-lg{
   border-radius: 0.5rem;
 }
+.bg-orange-400{
+  --tw-bg-opacity: 1;
+  background-color: rgb(251 146 60 / var(--tw-bg-opacity));
+}
 .bg-gray-100{
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
@@ -11714,10 +11727,6 @@ html, body, #root {
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-.bg-orange-400{
-  --tw-bg-opacity: 1;
-  background-color: rgb(251 146 60 / var(--tw-bg-opacity));
 }
 .p-4{
   padding: 1rem;
@@ -11743,13 +11752,13 @@ html, body, #root {
 .capitalize{
   text-transform: capitalize;
 }
-.text-orange-400{
-  --tw-text-opacity: 1;
-  color: rgb(251 146 60 / var(--tw-text-opacity));
-}
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+.text-orange-400{
+  --tw-text-opacity: 1;
+  color: rgb(251 146 60 / var(--tw-text-opacity));
 }
 .shadow-lg{
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);

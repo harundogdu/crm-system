@@ -1,9 +1,11 @@
-import {NavLink, useNavigate} from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import LoginImage from '../../assets/images/login.png';
-import {useForm} from 'react-hook-form';
-import {yupResolver} from "@hookform/resolvers/yup";
+import { useForm } from 'react-hook-form';
+import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import {useAuth} from "../../features/Authentication/AuthContext";
+import { useAuth } from "../../features/Authentication/AuthContext";
+import { Helmet } from "react-helmet";
+
 
 /**
  * @class Login
@@ -20,17 +22,21 @@ export default function Login() {
     const {
         register,
         handleSubmit,
-        formState: {errors, isValid, touchedFields}
+        formState: { errors, isValid, touchedFields }
     } = useForm({
         resolver: yupResolver(schema)
     });
-    const {login} = useAuth();
+    const { login } = useAuth();
 
     return (
         <div className="flex justify-center align-items-center h-screen bg-gray-100">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>CRM - Login</title>
+            </Helmet>
             <div className="row p-4 rounded-lg shadow-lg bg-white col-md-8 w-[500px]">
                 <div className="flex flex-col items-center justify-evenly">
-                    <img className="h-60" src={LoginImage} alt="Login Image"/>
+                    <img className="h-60" src={LoginImage} alt="Login Image" />
                     <h1 className="h3 text-orange-400">Welcome to Login Page</h1>
                 </div>
 

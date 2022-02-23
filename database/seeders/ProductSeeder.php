@@ -16,10 +16,11 @@ class ProductSeeder extends Seeder
     public function run()
     {
         $this->faker = Faker::create();
-        for ($i=0; $i < 100; $i++) { 
+        for ($i=0; $i < 1000; $i++) { 
             Product::create([
                 'name' => $this->faker->word,
                 'category_id' => mt_rand(1,10),
+                'user_id' => mt_rand(1,10),
                 'modelCode' => $this->faker->word,
                 'barcode' => $this->faker->word,
                 'brand' => $this->faker->word,

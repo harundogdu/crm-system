@@ -17,7 +17,7 @@ class CategorySeeder extends Seeder
     {
         $this->faker = Faker::create();
         
-        for ($i=0; $i < 10; $i++) { 
+        for ($i=0; $i < 50; $i++) { 
             Category::create([
                 'user_id' => mt_rand(1,2),
                 'name' => $this->faker->word,

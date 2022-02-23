@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AccountController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CategoryController;
@@ -42,6 +43,7 @@ Route::prefix('/v1')->name('v1.')->group(function () {
         Route::apiResources([
             'products' => ProductController::class,
             'categories' => CategoryController::class,
+            'accounts' => AccountController::class,
         ]);
 
     });

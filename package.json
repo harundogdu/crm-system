@@ -32,9 +32,11 @@
         "@hookform/resolvers": "^2.8.8",
         "joi": "^17.6.0",
         "mdbreact": "^5.2.0",
+        "react-helmet": "^6.1.0",
         "react-hook-form": "^7.27.1",
         "react-icons": "^4.3.1",
         "react-router-dom": "^6.2.1",
+        "react-spinners-kit": "^1.9.1",
         "yup": "^0.32.11"
     }
 }

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Content } from "../../components";
+import { Content, Loading } from "../../components";
 import { AuthService } from "../../services/AuthService";
 import { MDBDataTableV5 } from 'mdbreact';
 import { AiOutlineDelete, AiOutlineEdit, AiOutlinePlus } from "react-icons/ai";
@@ -133,7 +133,7 @@ function Products() {
 
 
     if (isLoading) {
-        return <div>Loading...</div>
+        return <Loading />
     }
 
     return (

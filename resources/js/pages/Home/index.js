@@ -1,11 +1,11 @@
 import {useAuth} from "../../features/Authentication/AuthContext";
-import {Navbar, Content, Footer} from "../../components";
+import {Navbar, Content, Footer, Loading} from "../../components";
 
 export default function Home() {
     const {logout, user, isAuthLoading} = useAuth();
 
     if (isAuthLoading) {
-        return <div>Loading...</div>
+        return <Loading />
     }
     return (
         <Content>

@@ -3,7 +3,7 @@ import React from 'react';
 import { AiOutlineDelete, AiOutlinePlus } from 'react-icons/ai';
 import { CgDetailsMore } from 'react-icons/cg';
 import { NavLink } from 'react-router-dom';
-import { Content } from "../../components";
+import { Content, Loading } from "../../components";
 import { AuthService } from '../../services/AuthService';
 
 function Accounts() {
@@ -97,7 +97,7 @@ function Accounts() {
     }, []);
 
     if (isLoading) {
-        return <div>Loading...</div>
+        return <Loading />
     }
 
     return (

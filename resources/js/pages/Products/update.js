@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import { Content } from '../../components';
+import { Content, Loading } from '../../components';
 import { AuthService } from '../../services/AuthService';
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
@@ -122,7 +122,7 @@ const Update = () => {
     }, [])
 
     if (isLoading) {
-        return <div>Loading...</div>
+        return <Loading />
     }
 
     return (

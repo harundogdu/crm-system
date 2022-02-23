@@ -3,7 +3,7 @@ import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from 'react-router-dom';
-import { Content } from '../../components';
+import { Content, Loading } from '../../components';
 import { AuthService } from '../../services/AuthService';
 
 const schema = yup.object().shape({
@@ -83,7 +83,7 @@ function Update() {
     }, [])
 
     if (isLoading) {
-        return <div>Loading...</div>
+        return <Loading />
     }
 
     return (

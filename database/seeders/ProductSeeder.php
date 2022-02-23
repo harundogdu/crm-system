@@ -19,8 +19,8 @@ class ProductSeeder extends Seeder
         for ($i=0; $i < 1000; $i++) { 
             Product::create([
                 'name' => $this->faker->word,
-                'category_id' => mt_rand(1,10),
-                'user_id' => mt_rand(1,10),
+                'category_id' => mt_rand(1,50),
+                'user_id' => mt_rand(1,11),
                 'modelCode' => $this->faker->word,
                 'barcode' => $this->faker->word,
                 'brand' => $this->faker->word,

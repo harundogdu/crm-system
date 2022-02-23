@@ -43,7 +43,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function addedProducts()
+    public function products()
     {
         return $this->hasMany(Product::class);
     }
@@ -51,5 +51,10 @@ class User extends Authenticatable
     public function categories()
     {
         return $this->hasMany(Category::class);
+    }
+
+    protected function serializeDate(\DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
     }
 }

@@ -19,7 +19,7 @@ class CategorySeeder extends Seeder
         
         for ($i=0; $i < 50; $i++) { 
             Category::create([
-                'user_id' => mt_rand(1,2),
+                'user_id' => mt_rand(1,11),
                 'name' => $this->faker->word,
                 'created_at' => $this->faker->dateTimeBetween('-1 years', 'now'),
                 'updated_at' => $this->faker->dateTimeBetween('-1 years', 'now'),

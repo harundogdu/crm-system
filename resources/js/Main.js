@@ -18,7 +18,10 @@ import {
     CategoryCreate,
     CategoryUpdate,
     AccountCreate,
-    AccountUpdate
+    AccountUpdate,
+    Customers,
+    CustomerCreate,
+    CustomerUpdate,
 } from "./pages";
 import { RequireAuth } from "./features/Authentication/RequireAuth";
 import { AuthStatus } from "./features/Authentication/AuthStatus";
@@ -85,6 +88,23 @@ const Main = () => {
                 <Route path="/profile" element={
                     <RequireAuth>
                         <AccountUpdate />
+                    </RequireAuth>
+                } />
+
+                {/*Customers*/}
+                <Route path="/customers" element={
+                    <RequireAuth>
+                        <Customers />
+                    </RequireAuth>
+                } />
+                <Route path="/customers/create" element={
+                    <RequireAuth>
+                        <CustomerCreate />
+                    </RequireAuth>
+                } />
+                <Route path="/customers/:id" element={
+                    <RequireAuth>
+                        <CustomerUpdate />
                     </RequireAuth>
                 } />
 

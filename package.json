@@ -32,6 +32,7 @@
     },
     "dependencies": {
         "@hookform/resolvers": "^2.8.8",
+        "ckeditor4-react": "^2.1.1",
         "joi": "^17.6.0",
         "mdbreact": "^5.2.0",
         "moment": "^2.29.1",

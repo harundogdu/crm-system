@@ -73,8 +73,13 @@ function Products() {
             field: 'delete',
             sort: 'disabled',
             width: 100,
-        },
-       
+        }, 
+        {
+            label: 'Detail',
+            field: 'detail',
+            sort: 'disabled',
+        }
+
     ]
     const rows = products.map(product => {
         return {
